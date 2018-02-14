@@ -28,9 +28,7 @@ class UserViewController: UITableViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    fileprivate func updateHeader() {
         user = User.currentUsers()?.first
         
         if User.currentUsers()?.count == 0 {
@@ -40,8 +38,12 @@ class UserViewController: UITableViewController {
         
         performFetch()
         configureLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-
+        updateHeader()
     }
     
     

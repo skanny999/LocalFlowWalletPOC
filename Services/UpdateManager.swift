@@ -11,13 +11,16 @@ import CoreData
 
 class UpdateManager {
     
-    static func update(user: String) {
+    static func update(user: String, completion:@escaping((Bool, String?) -> Void)) {
         
-        NetworkProvider.fetchJSON(forUser: user)
+        NetworkProvider.fetchJSON(forUser: user) { (updated, message) in
+            
+            completion(updated, message)
+        }
     }
     
 
-    func processUserJSON(json: [String : Any]) {
+    func processUserJSON(json: [String : Any], completion:@escaping ((Bool) -> Void)) {
         
         var user: User?
         
@@ -65,6 +68,8 @@ class UpdateManager {
             }
 
             CoreDataProvider.shared.save()
+            
+            completion(true)
             
             let notificationCenter = NotificationCenter.default
             notificationCenter.post(name: NSNotification.Name(rawValue:"LoginResult"), object: nil, userInfo: nil)

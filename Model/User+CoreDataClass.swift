@@ -24,6 +24,11 @@ public class User: NSManagedObject {
         
     }
     
+    static func currentUser() -> User? {
+        
+        return currentUsers()?.first
+    }
+    
     static func currentUsers() -> [User]? {
         
         let userFetch = NSFetchRequest<User>(entityName: "User")

@@ -24,7 +24,24 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        UpdateManager.update(user: passwordTextView.text!)
+        if let password = passwordTextView.text {
+            
+            UpdateManager.update(user: password, completion: { (updated, message) in
+                
+                if updated {
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.errorLabel.text = message
+                    }
+                }
+            })
+        }
+
         errorLabel.text = nil
     }
     

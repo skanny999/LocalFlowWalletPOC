@@ -16,22 +16,22 @@ class NetworkProvider {
     
     static func fetchContacts(completion: @escaping ([String]) -> Void) {
         
-        Alamofire.request(URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=riccardo")!).responseJSON { (responseData) in
+        Alamofire.request(contactsUrl()).responseJSON { (responseData) in
             
             if responseData.result.value != nil {
                 
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 
-                if let resData = swiftyJsonVar.arrayObject {
+                if let contacts = swiftyJsonVar.arrayObject {
                     
-                    completion(resData as! [String])
+                    completion(contacts as! [String])
                 }
             }
         }
     }
     
     
-    static func fetchJSON(forUser name: String) {
+    static func fetchJSON(forUser name: String, completion:@escaping ((Bool, String?) -> Void)) {
         
         let urlString = String(format:"https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?password=\(name)")
         
@@ -50,11 +50,16 @@ class NetworkProvider {
                         
                         let updateManager = UpdateManager()
                         
-                        updateManager.processUserJSON(json: jsonDict)
+                        updateManager.processUserJSON(json: jsonDict, completion: { (processed) in
+                            
+                            completion(processed, nil)
+                        })
                         
                     } else {
                     
-                        if let message = jsonDict["message"] {
+                        if let message = jsonDict["message"] as? String {
+                            
+                            completion(false, message)
                             let notificationCenter = NotificationCenter.default
                             notificationCenter.post(name: NSNotification.Name(rawValue:"LoginResult"), object: nil, userInfo: ["message" : message])
                         }
@@ -115,6 +120,20 @@ class NetworkProvider {
         let notificationCenter = NotificationCenter.default
         notificationCenter.post(name: NSNotification.Name(rawValue:"SendResult"), object: nil, userInfo: ["message" : message])
     }
+    
+    
+    static func contactsUrl() -> URL {
+        
+        if let userName = User.currentUser()?.nickname {
+            
+            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=\(userName)")!
+            
+        } else {
+            
+            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=")!
+        }
+    }
+    
     
 }
 
