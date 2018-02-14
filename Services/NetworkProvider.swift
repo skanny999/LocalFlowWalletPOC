@@ -8,8 +8,28 @@
 
 import UIKit
 import CoreData
+import Alamofire
+import SwiftyJSON
 
 class NetworkProvider {
+    
+    
+    static func fetchContacts(completion: @escaping ([String]) -> Void) {
+        
+        Alamofire.request(URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=riccardo")!).responseJSON { (responseData) in
+            
+            if responseData.result.value != nil {
+                
+                let swiftyJsonVar = JSON(responseData.result.value!)
+                
+                if let resData = swiftyJsonVar.arrayObject {
+                    
+                    completion(resData as! [String])
+                }
+            }
+        }
+    }
+    
     
     static func fetchJSON(forUser name: String) {
         
