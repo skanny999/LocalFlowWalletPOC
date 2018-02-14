@@ -7,14 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C48685573A802573E9B75A8 /* Pods_LocalFlowWalletPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */; };
+		8BB718D620332D3400A9040D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB718D520332D3400A9040D /* Extensions.swift */; };
+		8BCAEFB6203494690092B7BA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8BCAEFB5203494690092B7BA /* Podfile */; };
+		8BD6BC642030563500D9D8A7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6BC632030563500D9D8A7 /* Notifications.swift */; };
+		8BD6BC662031BB4600D9D8A7 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */; };
+		8BD6BC682031D79F00D9D8A7 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6BC672031D79F00D9D8A7 /* TransactionCell.swift */; };
 		8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC83202F35D20011346A /* AppDelegate.swift */; };
-		8BFEBC86202F35D20011346A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC85202F35D20011346A /* ViewController.swift */; };
+		8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC85202F35D20011346A /* LoginViewController.swift */; };
 		8BFEBC89202F35D20011346A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC87202F35D20011346A /* Main.storyboard */; };
 		8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */; };
 		8BFEBC8E202F35D20011346A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8D202F35D20011346A /* Assets.xcassets */; };
 		8BFEBC91202F35D20011346A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8F202F35D20011346A /* LaunchScreen.storyboard */; };
 		8BFEBC9C202F35D20011346A /* LocalFlowWalletPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC9B202F35D20011346A /* LocalFlowWalletPOCTests.swift */; };
 		8BFEBCA7202F35D20011346A /* LocalFlowWalletPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */; };
+		8BFEBCB5202F3CC20011346A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB4202F3CC20011346A /* TabBarController.swift */; };
+		8BFEBCBC202F42F60011346A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */; };
+		8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */; };
+		8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */; };
+		8BFEBCBF202F42F60011346A /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB9202F42F60011346A /* Balance+CoreDataProperties.swift */; };
+		8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCBA202F42F60011346A /* Transaction+CoreDataClass.swift */; };
+		8BFEBCC1202F42F60011346A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCBB202F42F60011346A /* Transaction+CoreDataProperties.swift */; };
+		8BFEBCC6202F46A00011346A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCC3202F469F0011346A /* NetworkProvider.swift */; };
+		8BFEBCC7202F46A00011346A /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCC4202F469F0011346A /* CoreDataProvider.swift */; };
+		8BFEBCC8202F46A00011346A /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCC5202F469F0011346A /* UpdateManager.swift */; };
+		8BFEBCCC202F80A40011346A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCCB202F80A40011346A /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +52,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.release.xcconfig"; sourceTree = "<group>"; };
+		8BB718D520332D3400A9040D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8BCAEFB5203494690092B7BA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		8BD6BC632030563500D9D8A7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		8BD6BC672031D79F00D9D8A7 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		8BFEBC80202F35D20011346A /* LocalFlowWalletPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalFlowWalletPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFEBC83202F35D20011346A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BFEBC85202F35D20011346A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BFEBC85202F35D20011346A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8BFEBC88202F35D20011346A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BFEBC8B202F35D20011346A /* LocalFlowWalletPOC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalFlowWalletPOC.xcdatamodel; sourceTree = "<group>"; };
 		8BFEBC8D202F35D20011346A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +72,19 @@
 		8BFEBCA2202F35D20011346A /* LocalFlowWalletPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletPOCUITests.swift; sourceTree = "<group>"; };
 		8BFEBCA8202F35D20011346A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BFEBCB4202F3CC20011346A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BFEBCB9202F42F60011346A /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BFEBCBA202F42F60011346A /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BFEBCBB202F42F60011346A /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BFEBCC3202F469F0011346A /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		8BFEBCC4202F469F0011346A /* CoreDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
+		8BFEBCC5202F469F0011346A /* UpdateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
+		8BFEBCCB202F80A40011346A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalFlowWalletPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C48685573A802573E9B75A8 /* Pods_LocalFlowWalletPOC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +113,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12DFE78DBD6C91E92489861E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BB718D420332D0F00A9040D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8BB718D520332D3400A9040D /* Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		8BFEBC77202F35D20011346A = {
 			isa = PBXGroup;
 			children = (
+				8BB718D420332D0F00A9040D /* Utilities */,
+				8BFEBCCA202F4B7E0011346A /* Support Files */,
+				8BFEBCC2202F43050011346A /* Model */,
+				8BFEBCC9202F46A50011346A /* Services */,
 				8BFEBC82202F35D20011346A /* LocalFlowWalletPOC */,
 				8BFEBC9A202F35D20011346A /* LocalFlowWalletPOCTests */,
 				8BFEBCA5202F35D20011346A /* LocalFlowWalletPOCUITests */,
 				8BFEBC81202F35D20011346A /* Products */,
+				A3682E56CAC36DECA0FE95D7 /* Pods */,
+				12DFE78DBD6C91E92489861E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,12 +159,15 @@
 			isa = PBXGroup;
 			children = (
 				8BFEBC83202F35D20011346A /* AppDelegate.swift */,
-				8BFEBC85202F35D20011346A /* ViewController.swift */,
+				8BFEBCB4202F3CC20011346A /* TabBarController.swift */,
+				8BFEBC85202F35D20011346A /* LoginViewController.swift */,
+				8BFEBCCB202F80A40011346A /* UserViewController.swift */,
+				8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */,
+				8BD6BC672031D79F00D9D8A7 /* TransactionCell.swift */,
 				8BFEBC87202F35D20011346A /* Main.storyboard */,
 				8BFEBC8D202F35D20011346A /* Assets.xcassets */,
 				8BFEBC8F202F35D20011346A /* LaunchScreen.storyboard */,
 				8BFEBC92202F35D20011346A /* Info.plist */,
-				8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */,
 			);
 			path = LocalFlowWalletPOC;
 			sourceTree = "<group>";
@@ -128,6 +190,48 @@
 			path = LocalFlowWalletPOCUITests;
 			sourceTree = "<group>";
 		};
+		8BFEBCC2202F43050011346A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */,
+				8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */,
+				8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */,
+				8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */,
+				8BFEBCB9202F42F60011346A /* Balance+CoreDataProperties.swift */,
+				8BFEBCBA202F42F60011346A /* Transaction+CoreDataClass.swift */,
+				8BFEBCBB202F42F60011346A /* Transaction+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BFEBCC9202F46A50011346A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8BFEBCC4202F469F0011346A /* CoreDataProvider.swift */,
+				8BFEBCC3202F469F0011346A /* NetworkProvider.swift */,
+				8BFEBCC5202F469F0011346A /* UpdateManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8BFEBCCA202F4B7E0011346A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BD6BC632030563500D9D8A7 /* Notifications.swift */,
+				8BCAEFB5203494690092B7BA /* Podfile */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		A3682E56CAC36DECA0FE95D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */,
+				7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BFEBCAB202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOC" */;
 			buildPhases = (
+				0A8632252001973D16803CAA /* [CP] Check Pods Manifest.lock */,
 				8BFEBC7C202F35D20011346A /* Sources */,
 				8BFEBC7D202F35D20011346A /* Frameworks */,
 				8BFEBC7E202F35D20011346A /* Resources */,
+				6D173398A4CEDD01FBEACB16 /* [CP] Embed Pods Frameworks */,
+				044C120DEA257D9A9254AE48 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +344,7 @@
 			files = (
 				8BFEBC91202F35D20011346A /* LaunchScreen.storyboard in Resources */,
 				8BFEBC8E202F35D20011346A /* Assets.xcassets in Resources */,
+				8BCAEFB6203494690092B7BA /* Podfile in Resources */,
 				8BFEBC89202F35D20011346A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,14 +365,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		044C120DEA257D9A9254AE48 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A8632252001973D16803CAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LocalFlowWalletPOC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D173398A4CEDD01FBEACB16 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BFEBC7C202F35D20011346A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD6BC642030563500D9D8A7 /* Notifications.swift in Sources */,
+				8BB718D620332D3400A9040D /* Extensions.swift in Sources */,
+				8BD6BC682031D79F00D9D8A7 /* TransactionCell.swift in Sources */,
+				8BFEBCC1202F42F60011346A /* Transaction+CoreDataProperties.swift in Sources */,
+				8BFEBCBF202F42F60011346A /* Balance+CoreDataProperties.swift in Sources */,
+				8BD6BC662031BB4600D9D8A7 /* PaymentViewController.swift in Sources */,
 				8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */,
-				8BFEBC86202F35D20011346A /* ViewController.swift in Sources */,
+				8BFEBCB5202F3CC20011346A /* TabBarController.swift in Sources */,
+				8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */,
+				8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */,
+				8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */,
+				8BFEBCCC202F80A40011346A /* UserViewController.swift in Sources */,
+				8BFEBCC8202F46A00011346A /* UpdateManager.swift in Sources */,
 				8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */,
+				8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */,
+				8BFEBCC6202F46A00011346A /* NetworkProvider.swift in Sources */,
+				8BFEBCBC202F42F60011346A /* User+CoreDataClass.swift in Sources */,
+				8BFEBCC7202F46A00011346A /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +609,7 @@
 		};
 		8BFEBCAC202F35D20011346A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +625,7 @@
 		};
 		8BFEBCAD202F35D20011346A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
