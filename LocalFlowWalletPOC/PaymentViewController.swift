@@ -16,8 +16,12 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var messageTextField: UITextField!
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var sendButton: UIButton!
+    @IBOutlet var currencyButton: UIBarButtonItem!
     
     var contacts: [String]?
+    
+    var currencies: [Currency] = [.ewa, .euro, .iota]
+    var currentCurrency: Currency = .ewa
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,57 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         
         sendButton.layer.cornerRadius = 8
         
-        navigationController?.navigationBar.topItem?.title = "\(User.currentUsers()?.first?.balance?.ewa ?? "0") EWA"
+        navigationController?.navigationBar.topItem?.title = "\(User.currentUser()?.balance?.ewa ?? "0")"
         recipientTextField.delegate = self
         updateContacts()
+        configureTitle(for: currentCurrency)
+        currencyButton.title = currentCurrency.rawValue
+        
+    }
+    
+    @IBAction func currencyButtonPressed(_ sender: Any) {
+        
+        toggleCurrency()
+    }
+    
+    
+    fileprivate func toggleCurrency() {
+    
+        let index = currencies.index(of: currentCurrency)
+        
+        var currency: Currency
+        
+        if index == currencies.count - 1 {
+            
+            currency = currencies.first!
+            
+        } else {
+            
+            currency = currencies[index! + 1]
+        }
+        
+        currentCurrency = currency
+        currencyButton.title = currency.rawValue
+        configureTitle(for: currency)
 
+    }
+    
+
+    
+    fileprivate func configureTitle(for currency:Currency) {
+        
+        var balance: String?
+        
+        switch currency {
+        case .ewa:
+            balance = User.currentUser()?.balance?.ewa
+        case .euro:
+            balance = User.currentUser()?.balance?.eur
+        case .iota:
+            balance = User.currentUser()?.balance?.iota
+        }
+        
+        navigationController?.navigationBar.topItem?.title = "\(balance ?? "0")"
     }
     
     fileprivate func configureSearchTextField() {
@@ -77,7 +128,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     
     func verifyFields() {
         
-        guard let recipient = recipientTextField.text,
+        guard let recipient = recipientTextField.text?.dropFirst(),
             !recipient.isEmpty else {
             
             messageLabel.text = "Address missing"
@@ -91,7 +142,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        sendPayment(for: amount, to: recipient)
+        sendPayment(for: amount, to: String(recipient))
     }
 
     
@@ -110,7 +161,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         
         guard let nickname = user.nickname else { fatalError("No User") }
 
-        let transactionDict = ["amount" : amount, "currency" : "ewa"] as [String : Any]
+        let transactionDict = ["amount" : amount, "currency" : currentCurrency.rawValue.lowercased()] as [String : Any]
         
         let dict = ["password" : nickname, "tx" : transactionDict] as [String : Any]
         

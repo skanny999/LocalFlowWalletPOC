@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var passwordTextView: UITextField!
     @IBOutlet var errorLabel: UILabel!
@@ -18,11 +18,27 @@ class LoginViewController: UIViewController {
         
         super.viewDidLoad()
         errorLabel.text = nil
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"LoginResult"), object: nil, queue: nil, using: catchNotification)
+        passwordTextView.becomeFirstResponder()
+        passwordTextView.delegate = self
         loginButton.layer.cornerRadius = 8
     }
 
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
+        
+        login()
+    }
+    
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        login()
+        passwordTextView.resignFirstResponder()
+        
+        return true
+    }
+    
+    
+    fileprivate func login() {
         
         if let password = passwordTextView.text {
             
@@ -41,25 +57,10 @@ class LoginViewController: UIViewController {
                 }
             })
         }
-
+        
         errorLabel.text = nil
     }
-    
-    func catchNotification(notification:Notification) -> Void {
-        
-        DispatchQueue.main.async {
-            
-            if let message = notification.userInfo?["message"] as? String {
-                
-                self.errorLabel.text = message
-                
-            } else {
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            }
-        }
-    }
+
     
     
     

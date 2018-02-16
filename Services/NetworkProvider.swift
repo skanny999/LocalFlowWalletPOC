@@ -17,10 +17,10 @@ class NetworkProvider {
     static func fetchContacts(completion: @escaping ([String]) -> Void) {
         
         Alamofire.request(contactsUrl()).responseJSON { (responseData) in
-            
-            if responseData.result.value != nil {
+
+            if let value = responseData.result.value {
                 
-                let swiftyJsonVar = JSON(responseData.result.value!)
+                let swiftyJsonVar = JSON(value)
                 
                 if let contacts = swiftyJsonVar.arrayObject {
                     
@@ -77,6 +77,7 @@ class NetworkProvider {
         
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = ["Accept" : "application/json", "Content-Type" : "application/json"]
         request.httpMethod = "POST"
         request.httpBody = json
         

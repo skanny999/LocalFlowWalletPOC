@@ -27,6 +27,20 @@ extension String {
         
         return NumFormatter.instance.number(from: self)?.intValue
     }
+    
+//     func withoutFirstChar() -> String? {
+//
+//        var string = self
+//
+//        let char = string.dropFirst()
+//
+//
+//        
+//
+//        return String(char)
+//
+//    }
+    
 }
 
 

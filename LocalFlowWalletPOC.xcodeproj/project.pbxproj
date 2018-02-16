@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C48685573A802573E9B75A8 /* Pods_LocalFlowWalletPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */; };
+		8B327A262034C55C00C916A8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A252034C55C00C916A8 /* Structs.swift */; };
+		8B327A282034C5C300C916A8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A272034C5C300C916A8 /* Enums.swift */; };
 		8BB718D620332D3400A9040D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB718D520332D3400A9040D /* Extensions.swift */; };
 		8BCAEFB6203494690092B7BA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8BCAEFB5203494690092B7BA /* Podfile */; };
 		8BD6BC642030563500D9D8A7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6BC632030563500D9D8A7 /* Notifications.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.release.xcconfig"; sourceTree = "<group>"; };
+		8B327A252034C55C00C916A8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		8B327A272034C5C300C916A8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8BB718D520332D3400A9040D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BCAEFB5203494690092B7BA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		8BD6BC632030563500D9D8A7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				8BB718D520332D3400A9040D /* Extensions.swift */,
+				8B327A252034C55C00C916A8 /* Structs.swift */,
+				8B327A272034C5C300C916A8 /* Enums.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 			files = (
 				8BD6BC642030563500D9D8A7 /* Notifications.swift in Sources */,
 				8BB718D620332D3400A9040D /* Extensions.swift in Sources */,
+				8B327A282034C5C300C916A8 /* Enums.swift in Sources */,
 				8BD6BC682031D79F00D9D8A7 /* TransactionCell.swift in Sources */,
 				8BFEBCC1202F42F60011346A /* Transaction+CoreDataProperties.swift in Sources */,
 				8BFEBCBF202F42F60011346A /* Balance+CoreDataProperties.swift in Sources */,
@@ -439,6 +446,7 @@
 				8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */,
 				8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */,
 				8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */,
+				8B327A262034C55C00C916A8 /* Structs.swift in Sources */,
 				8BFEBCCC202F80A40011346A /* UserViewController.swift in Sources */,
 				8BFEBCC8202F46A00011346A /* UpdateManager.swift in Sources */,
 				8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */,
