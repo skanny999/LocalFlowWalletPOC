@@ -2,7 +2,7 @@
 //  Transaction+CoreDataProperties.swift
 //  LocalFlowWalletPOC
 //
-//  Created by Riccardo Scanavacca on 10/02/2018.
+//  Created by Riccardo Scanavacca on 19/02/2018.
 //  Copyright © 2018 Test. All rights reserved.
 //
 //

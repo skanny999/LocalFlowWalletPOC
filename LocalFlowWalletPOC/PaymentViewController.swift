@@ -50,7 +50,7 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return tableView.frame.size.height / 5.5
+        return tableView.frame.size.height / 5
     }
     
     
@@ -58,21 +58,11 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     
         let index = currencies.index(of: currentCurrency)
         
-        var currency: Currency
-        
-        if index == currencies.count - 1 {
-            
-            currency = currencies.first!
-            
-        } else {
-            
-            currency = currencies[index! + 1]
-        }
+        let currency = (index == currencies.count - 1) ? currencies.first! : currencies[index! + 1]
         
         currentCurrency = currency
         currencyButton.title = currency.rawValue
         configureTitle(for: currency)
-
     }
     
 
@@ -165,6 +155,7 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {[weak self] in
                     
                     self?.messageLabel.text = message
+                    self?.tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
                 }
             })
         }

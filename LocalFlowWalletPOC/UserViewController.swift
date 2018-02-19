@@ -31,20 +31,21 @@ class UserViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        performFetch()
         loadUser()
     }
     
     fileprivate func loadUser() {
         
-        user = User.currentUsers()?.first
-        
         if User.currentUsers()?.count == 0 {
             
             self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
+            
+        } else {
+            
+            user = User.currentUser()
+            configureLabels()
         }
-        
-        performFetch()
-        configureLabels()
     }
     
 
@@ -61,18 +62,12 @@ class UserViewController: UITableViewController {
         }
     }
     
-    fileprivate func configureBackground() {
-        
-        let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "Background"))
-        backgroundImageView.frame = tableView.frame
-        tableView.backgroundView = backgroundImageView
-    }
-    
     
     func configureFetchedResultsController() {
         
         fetchedResultsController = CoreDataProvider.shared.transactionsFetchResultController()
         fetchedResultsController.delegate = self
+        
     }
     
     
@@ -125,11 +120,7 @@ extension UserViewController {
         
         return cell
     }
-    
-    
-    
-    
-    
+ 
 }
 
 

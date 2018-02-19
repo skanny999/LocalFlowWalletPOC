@@ -46,10 +46,8 @@ class UpdateManager {
                 if let transactions = tranOut as? Array<Any> {
                     
                     for transaction in transactions {
- 
-                            let transaction = Transaction.newOutTransaction(from: transaction as! [String : Any])
 
-                            self.process(transaction, for: user!)
+                            user?.addToTransactions(Transaction.newOutTransaction(from: transaction as! [String : Any]))
                     }
                 }
                 
@@ -59,9 +57,8 @@ class UpdateManager {
                         
                         for transaction in transactions {
 
-                                let transaction = Transaction.newInTransaction(from: transaction as! [String : Any])
-                            
-                                self.process(transaction, for: user!)
+                            user?.addToTransactions(Transaction.newInTransaction(from: transaction as! [String : Any]))
+
                         }
                     }
                 }
@@ -88,8 +85,7 @@ class UpdateManager {
                 
                 CoreDataProvider.shared.managedObjectContext.delete(transaction)
             }
-            
-//            allTransactions.contains(transaction) ? user.addToTransactions(transaction) : CoreDataProvider.shared.managedObjectContext.delete(transaction)
+
             
         } else {
             
@@ -101,14 +97,10 @@ class UpdateManager {
     
     func processTxOut(from dict: [String : Any]) {
         
-        CoreDataProvider.shared.backgroundManagedObjectContext.perform {
+        CoreDataProvider.shared.managedObjectContext.perform {
             
-            let transaction = Transaction.newOutTransaction(from: dict)
-            
-            if let user = User.currentUser() {
-                
-                self.process(transaction, for: user)
-            }
+            User.currentUser()?.addToTransactions(Transaction.newOutTransaction(from: dict))
+
         }
         
         CoreDataProvider.shared.save()
