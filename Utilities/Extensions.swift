@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import SearchTextField
+
+typealias PostCompletion = (Bool, String) -> Void
 
 
 extension String {
@@ -27,29 +30,35 @@ extension String {
         
         return NumFormatter.instance.number(from: self)?.intValue
     }
+
+}
+
+extension UITableView {
     
-//     func withoutFirstChar() -> String? {
-//
-//        var string = self
-//
-//        let char = string.dropFirst()
-//
-//
-//        
-//
-//        return String(char)
-//
-//    }
-    
+    func setBackgroundImage() {
+        
+        let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "Background"))
+        backgroundImageView.frame = self.frame
+        self.backgroundView = backgroundImageView
+    }
 }
 
 
-
-
-extension UIColor {
+extension SearchTextField {
     
-    
-    
-    
-    
+    func configure(for contacts: [String]?) {
+        
+        if let contacts = contacts {
+            
+            self.filterStrings(contacts)
+            self.maxNumberOfResults = 5
+            self.theme.font = UIFont.systemFont(ofSize: 15)
+            self.theme.cellHeight = 40
+            self.highlightAttributes = [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 15)]
+            self.theme.separatorColor = UIColor (red: 85.0/255.0, green: 180.0/255.0, blue: 250.0/255.0, alpha: 0.8)
+            self.theme.borderColor = UIColor (red: 85.0/255.0, green: 180.0/255.0, blue: 250.0/255.0, alpha: 1)
+        }
+    }
 }
+    
+

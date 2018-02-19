@@ -9,7 +9,7 @@
 import UIKit
 import SearchTextField
 
-class PaymentViewController: UIViewController, UITextFieldDelegate {
+class PaymentViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet var recipientTextField: SearchTextField!
     @IBOutlet var amountTextField: UITextField!
@@ -17,6 +17,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var currencyButton: UIBarButtonItem!
+
     
     var contacts: [String]?
     
@@ -25,13 +26,13 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"SendResult"), object: nil, queue: nil, using: catchNotification)
         
         sendButton.layer.cornerRadius = 8
         
         navigationController?.navigationBar.topItem?.title = "\(User.currentUser()?.balance?.ewa ?? "0")"
         recipientTextField.delegate = self
         updateContacts()
+        tableView.setBackgroundImage()
         configureTitle(for: currentCurrency)
         currencyButton.title = currentCurrency.rawValue
         
@@ -40,6 +41,16 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     @IBAction func currencyButtonPressed(_ sender: Any) {
         
         toggleCurrency()
+    }
+    
+    @IBAction func sendButtonPressed(_ sender: Any) {
+        
+        verifyFields()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return tableView.frame.size.height / 5.5
     }
     
     
@@ -82,20 +93,6 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.topItem?.title = "\(balance ?? "0")"
     }
     
-    fileprivate func configureSearchTextField() {
-        
-        if let contacts = contacts {
-            
-            recipientTextField.filterStrings(contacts)
-            recipientTextField.maxNumberOfResults = 5
-            recipientTextField.theme.font = UIFont.systemFont(ofSize: 15)
-            recipientTextField.theme.cellHeight = 40
-            recipientTextField.highlightAttributes = [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 15)]
-            recipientTextField.theme.separatorColor = UIColor (red: 85.0/255.0, green: 180.0/255.0, blue: 250.0/255.0, alpha: 0.8)
-            recipientTextField.theme.borderColor = UIColor (red: 85.0/255.0, green: 180.0/255.0, blue: 250.0/255.0, alpha: 1)
-        }
-
-    }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
@@ -107,26 +104,21 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
     fileprivate func updateContacts() {
         
-        NetworkProvider.fetchContacts(completion: { (contacts) in
+        NetworkProvider.fetchContacts(completion: { [unowned self](contacts) in
             
             self.contacts = contacts
             
-            self.configureSearchTextField()
+            self.recipientTextField.configure(for: contacts)
 
         })
     }
 
+
     
-    @IBAction func sendButtonPressed(_ sender: Any) {
-        
-        verifyFields()
-        
-    }
-     
-    
-    func verifyFields() {
+    fileprivate func verifyFields() {
         
         guard let recipient = recipientTextField.text?.dropFirst(),
             !recipient.isEmpty else {
@@ -144,22 +136,44 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         
         sendPayment(for: amount, to: String(recipient))
     }
-
     
-    func sendPayment(for amount: Double, to recipient: String) {
+    
+    fileprivate func resetFields() {
         
-        if let data = createTransactionJson(for: amount) {
+        DispatchQueue.main.async { [weak self] in
             
-            NetworkProvider.post(data, to: recipient)
+            self?.recipientTextField.text = nil
+            self?.amountTextField.text = nil
+            self?.messageTextField.text = nil
         }
     }
     
     
-    func createTransactionJson(for amount: Double) -> Data? {
+
+    
+    func sendPayment(for amount: Double, to recipient: String) {
         
-        guard let user = User.currentUsers()?.first else { fatalError("No User") }
+        if let data = transactionJson(for: amount) {
+            
+            NetworkProvider.post(data, to: recipient, completion: { [unowned self] (postWasSuccesful, message) in
+
+                if postWasSuccesful {
+                    
+                    self.resetFields()
+                }
+                
+                DispatchQueue.main.async {[weak self] in
+                    
+                    self?.messageLabel.text = message
+                }
+            })
+        }
+    }
+    
+    
+    func transactionJson(for amount: Double) -> Data? {
         
-        guard let nickname = user.nickname else { fatalError("No User") }
+        guard let user = User.currentUsers()?.first, let nickname = user.nickname else { fatalError("No User") }
 
         let transactionDict = ["amount" : amount, "currency" : currentCurrency.rawValue.lowercased()] as [String : Any]
         
@@ -177,20 +191,4 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
 
         return nil
     }
-    
-    
-    func catchNotification(notification: Notification) -> Void {
-        
-        DispatchQueue.main.async {
-            
-            if let message = notification.userInfo?["message"] as? String {
-                
-                self.messageLabel.text = message
-                
-            }
-        }
-    }
-    
-
-
 }

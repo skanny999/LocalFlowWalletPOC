@@ -61,13 +61,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         errorLabel.text = nil
     }
 
-    
-    
-    
-    
-    
-    
-
-
 }
 

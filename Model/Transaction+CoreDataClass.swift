@@ -43,14 +43,14 @@ public class Transaction: NSManagedObject {
     static func newOutTransaction(from dict: [String : Any]) -> Transaction {
 
         return transaction(from: dict, outgoing: true)
-
     }
+    
     
     static func newInTransaction(from dict: [String : Any]) -> Transaction {
         
         return transaction(from: dict, outgoing: false)
-        
     }
+    
     
     static func transaction(from dict: [String : Any], outgoing: Bool) -> Transaction {
         
@@ -88,10 +88,25 @@ public class Transaction: NSManagedObject {
             
             transaction.confirmed = confirmedString == "confirmed" ? true : false            
         }
-        
-        
-        return transaction
 
+        return transaction
+    }
+    
+    static func == (lhs: Transaction, rhs: Transaction) -> Bool {
+
+        return lhs.id == rhs.id
     }
 
 }
+
+
+//extension Transaction: Equatable {
+//
+//        static func == (lhs: Transaction, rhs: Transaction) -> Bool {
+//
+//
+//            lhs.id == rhs.id
+//        }
+//
+//}
+

@@ -60,8 +60,6 @@ class NetworkProvider {
                         if let message = jsonDict["message"] as? String {
                             
                             completion(false, message)
-                            let notificationCenter = NotificationCenter.default
-                            notificationCenter.post(name: NSNotification.Name(rawValue:"LoginResult"), object: nil, userInfo: ["message" : message])
                         }
                     }
                 }
@@ -71,7 +69,7 @@ class NetworkProvider {
     }
     
     
-    static func post(_ json: Data, to user: String) {
+    static func post(_ json: Data, to user: String, completion:@escaping (PostCompletion)) {
         
         let urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
         
@@ -96,19 +94,14 @@ class NetworkProvider {
                             
                             let updateManager = UpdateManager()
                             updateManager.processTxOut(from: txOut)
-                            sendResult(message: message)
+                            completion(true, message)
                         }
                         
                     } else {
                         
-                        if let message = jsonDict["message"] as? String {
-                            
-                            sendResult(message: message)
-                            
-                        } else {
-                            
-                            sendResult(message: "Something went wrong!!")
-                        }
+                        let message = jsonDict["message"] as? String ?? "Something went wrong!!"
+                        
+                        completion(false, message)
                     }
                 }
             }

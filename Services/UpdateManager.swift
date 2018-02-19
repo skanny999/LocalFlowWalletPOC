@@ -71,9 +71,6 @@ class UpdateManager {
             
             completion(true)
             
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.post(name: NSNotification.Name(rawValue:"LoginResult"), object: nil, userInfo: nil)
-            
             print("User: \(user.debugDescription)")
         }
     }
@@ -83,8 +80,16 @@ class UpdateManager {
         
         if let allTransactions = Transaction.allTransactions() {
             
-            allTransactions.contains(transaction) ?
-            user.addToTransactions(transaction) : CoreDataProvider.shared.managedObjectContext.delete(transaction)
+            if allTransactions.contains(transaction) {
+                
+                user.addToTransactions(transaction)
+                
+            } else {
+                
+                CoreDataProvider.shared.managedObjectContext.delete(transaction)
+            }
+            
+//            allTransactions.contains(transaction) ? user.addToTransactions(transaction) : CoreDataProvider.shared.managedObjectContext.delete(transaction)
             
         } else {
             
@@ -100,7 +105,7 @@ class UpdateManager {
             
             let transaction = Transaction.newOutTransaction(from: dict)
             
-            if let user = User.currentUsers()?.first {
+            if let user = User.currentUser() {
                 
                 self.process(transaction, for: user)
             }

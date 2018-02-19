@@ -24,11 +24,18 @@ class UserViewController: UITableViewController {
         super.viewDidLoad()
 
         configureFetchedResultsController()
-        configureBackground()
+        tableView.setBackgroundImage()
 
     }
     
-    fileprivate func updateHeader() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadUser()
+    }
+    
+    fileprivate func loadUser() {
+        
         user = User.currentUsers()?.first
         
         if User.currentUsers()?.count == 0 {
@@ -40,11 +47,7 @@ class UserViewController: UITableViewController {
         configureLabels()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateHeader()
-    }
+
     
     
     func configureLabels() {
