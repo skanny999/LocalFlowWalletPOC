@@ -22,21 +22,20 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     var contacts: [String]?
     
     var currencies: [Currency] = [.ewa, .euro, .iota]
-    var currentCurrency: Currency = .ewa
+    var currentCurrency: Currency = Default.currency
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sendButton.layer.cornerRadius = 8
-        
-        navigationController?.navigationBar.topItem?.title = "\(User.currentUser()?.balance?.ewa ?? "0")"
         recipientTextField.delegate = self
         updateContacts()
         tableView.setBackgroundImage()
-        configureTitle(for: currentCurrency)
-        currencyButton.title = currentCurrency.rawValue
-        
+        configureNavigationBar()
     }
+    
+    
+    
     
     @IBAction func currencyButtonPressed(_ sender: Any) {
         
@@ -53,6 +52,18 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         return tableView.frame.size.height / 5
     }
     
+    fileprivate func barTitle() -> String {
+
+        switch currentCurrency {
+        case .ewa:
+            return User.currentUser()?.balance?.ewa ?? "0"
+        case .iota:
+            return User.currentUser()?.balance?.iota ?? "0"
+        case .euro:
+            return User.currentUser()?.balance?.eur ?? "0"
+        }
+    }
+    
     
     fileprivate func toggleCurrency() {
     
@@ -61,26 +72,14 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         let currency = (index == currencies.count - 1) ? currencies.first! : currencies[index! + 1]
         
         currentCurrency = currency
-        currencyButton.title = currency.rawValue
-        configureTitle(for: currency)
+        Default.currency = currency
+        configureNavigationBar()
     }
     
-
-    
-    fileprivate func configureTitle(for currency:Currency) {
+    fileprivate func configureNavigationBar() {
         
-        var balance: String?
-        
-        switch currency {
-        case .ewa:
-            balance = User.currentUser()?.balance?.ewa
-        case .euro:
-            balance = User.currentUser()?.balance?.eur
-        case .iota:
-            balance = User.currentUser()?.balance?.iota
-        }
-        
-        navigationController?.navigationBar.topItem?.title = "\(balance ?? "0")"
+        navigationController?.navigationBar.topItem?.title = barTitle()
+        currencyButton.title = currentCurrency.rawValue
     }
     
     
@@ -102,7 +101,6 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
             self.contacts = contacts
             
             self.recipientTextField.configure(for: contacts)
-
         })
     }
 

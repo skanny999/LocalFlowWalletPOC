@@ -167,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbP-dO-XWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1900" y="49"/>
+            <point key="canvasLocation" x="-1088" y="50"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="WMH-vA-I3K">
@@ -250,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrR-9l-i2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-900" y="48"/>
+            <point key="canvasLocation" x="-144" y="50"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="PvL-V6-cnS">
@@ -435,6 +435,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="eOC-Mg-rjJ">
                         <barButtonItem key="rightBarButtonItem" id="YTD-Y1-ZoH">
+                            <color key="tintColor" red="0.23503040310000001" green="0.54124704479999997" blue="0.62366600539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="currencyButtonPressed:" destination="6Gj-mt-X4i" id="RsO-fU-xiB"/>
                             </connections>
@@ -455,12 +456,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </objects>
-            <point key="canvasLocation" x="930" y="175"/>
+            <point key="canvasLocation" x="954" y="-761"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WWR-Kk-zTn">
             <objects>
-                <tabBarController id="AiY-G6-vGA" customClass="TabBarController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="AiY-G6-vGA" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y0I-K3-sD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -502,7 +503,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHr-et-RJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1900" y="-760"/>
+            <point key="canvasLocation" x="-1086" y="-762"/>
         </scene>
         <!--Payments-->
         <scene sceneID="RWA-Uz-qO1">
@@ -513,6 +514,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Ar-qu-2eY">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                            <color key="textColor" red="0.23503040310000001" green="0.54124704479999997" blue="0.62366600539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -521,7 +527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPC-HH-vbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="-761"/>
+            <point key="canvasLocation" x="-144" y="-761"/>
         </scene>
     </scenes>
     <resources>

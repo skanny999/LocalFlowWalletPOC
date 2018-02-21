@@ -120,7 +120,6 @@ extension UserViewController {
         
         return cell
     }
- 
 }
 
 

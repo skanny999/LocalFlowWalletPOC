@@ -23,7 +23,6 @@
 		8BFEBC91202F35D20011346A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8F202F35D20011346A /* LaunchScreen.storyboard */; };
 		8BFEBC9C202F35D20011346A /* LocalFlowWalletPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC9B202F35D20011346A /* LocalFlowWalletPOCTests.swift */; };
 		8BFEBCA7202F35D20011346A /* LocalFlowWalletPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */; };
-		8BFEBCB5202F3CC20011346A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB4202F3CC20011346A /* TabBarController.swift */; };
 		8BFEBCBC202F42F60011346A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */; };
 		8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */; };
 		8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */; };
@@ -76,7 +75,6 @@
 		8BFEBCA2202F35D20011346A /* LocalFlowWalletPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletPOCUITests.swift; sourceTree = "<group>"; };
 		8BFEBCA8202F35D20011346A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BFEBCB4202F3CC20011346A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				8BFEBC83202F35D20011346A /* AppDelegate.swift */,
-				8BFEBCB4202F3CC20011346A /* TabBarController.swift */,
 				8BFEBC85202F35D20011346A /* LoginViewController.swift */,
 				8BFEBCCB202F80A40011346A /* UserViewController.swift */,
 				8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */,
@@ -442,7 +439,6 @@
 				8BFEBCBF202F42F60011346A /* Balance+CoreDataProperties.swift in Sources */,
 				8BD6BC662031BB4600D9D8A7 /* PaymentViewController.swift in Sources */,
 				8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */,
-				8BFEBCB5202F3CC20011346A /* TabBarController.swift in Sources */,
 				8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */,
 				8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */,
 				8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */,
