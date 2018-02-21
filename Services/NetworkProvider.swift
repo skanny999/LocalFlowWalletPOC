@@ -33,86 +33,67 @@ class NetworkProvider {
     
     static func fetchJSON(forUser name: String, completion:@escaping ((Bool, String?) -> Void)) {
         
-        let urlString = String(format:"https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?password=\(name)")
+        let fetchUrl = url(for: name)
         
-        let url = URL(string: urlString)!
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        Alamofire.request(fetchUrl).responseJSON { (response) in
             
-            if let data = data {
+            if response.result.isFailure {
                 
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                let jsonDict = json as! [String : Any]
+                completion(false, "Something wrong with the connection")
+                return
+            }
+            
+            guard let value = response.result.value, let json = JSON(value).dictionaryObject else {
                 
-                if let response = response as? HTTPURLResponse {
+                completion(false, "Something wrong with the connection")
+                return
+            }
+            
+            if response.response?.statusCode == 200 {
+                
+                let updateManager = UpdateManager()
+                updateManager.processUserJSON(json: json, completion: { (processed) in
                     
-                    if response.statusCode == 200 {
-                        
-                        let updateManager = UpdateManager()
-                        
-                        updateManager.processUserJSON(json: jsonDict, completion: { (processed) in
-                            
-                            completion(processed, nil)
-                        })
-                        
-                    } else {
-                    
-                        if let message = jsonDict["message"] as? String {
-                            
-                            completion(false, message)
-                        }
-                    }
-                }
+                    completion(processed, nil)
+                })
+                
+            } else {
+                
+                completion(false, json["message"] as? String)
             }
         }
-        task.resume()
     }
+
     
     
     static func post(_ json: Data, to user: String, completion:@escaping (PostCompletion)) {
         
-        let urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+        let request = urlRequest(to: user, with: json)
         
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = ["Accept" : "application/json", "Content-Type" : "application/json"]
-        request.httpMethod = "POST"
-        request.httpBody = json
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        Alamofire.request(request).responseJSON { (response) in
             
-            if let data = data {
+            guard let value = response.result.value, response.result.isSuccess else {
                 
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                let jsonDict = json as! [String : Any]
-                
-                if let response = response as? HTTPURLResponse {
-                    
-                    if response.statusCode == 201 {
-                        
-                        if let message = jsonDict["message"] as? String, let txOut = jsonDict["tx"] as? [String : Any]{
-                            
-                            let updateManager = UpdateManager()
-                            updateManager.processTxOut(from: txOut)
-                            completion(true, message)
-                        }
-                        
-                    } else {
-                        
-                        let message = jsonDict["message"] as? String ?? "Something went wrong!!"
-                        
-                        completion(false, message)
-                    }
-                }
+                completion(false, "Something wrong with the connection")
+                return
             }
+            
+            let json = JSON(value)
+            let message = json["message"].stringValue
+            
+            if response.response?.statusCode == 201, let transactionDict = json["tx"].dictionaryObject {
+                
+                let updateManager = UpdateManager()
+                updateManager.processTxOut(from: transactionDict)
+                
+                completion(true, message)
+                
+            } else {
+                
+                completion(false, message)
+            }
+            
         }
-        task.resume()
-    }
-    
-   static func sendResult(message: String) {
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.post(name: NSNotification.Name(rawValue:"SendResult"), object: nil, userInfo: ["message" : message])
     }
     
     
@@ -124,8 +105,26 @@ class NetworkProvider {
             
         } else {
             
-            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=")!
+            fatalError("No user!")
         }
+    }
+    
+    static func url(for name: String) -> URL {
+        
+        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?password=\(name)")!
+    }
+    
+    static func urlRequest(to user: String, with json: Data) -> URLRequest {
+        
+        let urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+        let url = URL(string: urlString)!
+        
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = ["Accept" : "application/json", "Content-Type" : "application/json"]
+        request.httpMethod = "POST"
+        request.httpBody = json
+        
+        return request
     }
     
     

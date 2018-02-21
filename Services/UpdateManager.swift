@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 class UpdateManager {
     
@@ -28,8 +29,7 @@ class UpdateManager {
             
             let userDict = json["user"] as! [String : Any]
             
-            user = User.newUser(from: userDict )
-            
+            user = User.newUser(from: userDict)
             
             if let balanceDict = userDict["balance"] {
                 
@@ -86,12 +86,10 @@ class UpdateManager {
                 CoreDataProvider.shared.managedObjectContext.delete(transaction)
             }
 
-            
         } else {
             
             user.addToTransactions(transaction)
         }
-  
     }
     
     
