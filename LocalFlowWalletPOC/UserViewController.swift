@@ -120,7 +120,14 @@ extension UserViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.endEditing(true)
+    }
 }
+
+
 
 
 //MARK: - Fetched results controller delegate
