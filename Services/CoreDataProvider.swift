@@ -82,43 +82,6 @@ class CoreDataProvider {
     }
     
     
-    
-    
-//    func fetchTokensWithId( _ id : String, completion: @escaping ([Token]) ->()) {
-//
-//        managedObjectContext.perform {
-//
-//            let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
-//
-//            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-//
-//            let tokens = try! fetchRequest.execute()
-//
-//            completion (tokens)
-//
-//        }
-//    }
-//
-//    func fetchSelectedTokens(completion: @escaping([Token]) -> ()) {
-//
-//        managedObjectContext.perform {
-//
-//            let fetchRequest = self.selectedTokenFetchRequest()
-//
-//            let tokens = try! fetchRequest.execute()
-//
-//            completion(tokens)
-//        }
-//    }
-//
-//
-//    func tokensFetchRequest() -> NSFetchRequest<Token> {
-//
-//        return NSFetchRequest<Token>(entityName: "Token")
-//
-//    }
-    
-    
     func transactionsFetchResultController() -> NSFetchedResultsController<Transaction> {
         
         let fetchedResultController = NSFetchedResultsController<Transaction>(fetchRequest: transactionFetchRequest(),
@@ -139,9 +102,7 @@ class CoreDataProvider {
         return request
 
     }
-    
-    
-    
+
     
     func save() {
         
