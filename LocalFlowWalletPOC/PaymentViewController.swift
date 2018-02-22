@@ -49,7 +49,7 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return tableView.frame.size.height / 5
+        return tableView.frame.size.height / 6
     }
     
     fileprivate func barTitle() -> String {
@@ -89,7 +89,6 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
             
             updateContacts()
         }
-        
         return true
     }
     
@@ -111,14 +110,14 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         guard let recipient = recipientTextField.text?.dropFirst(),
             !recipient.isEmpty else {
             
-            messageLabel.text = "Address missing"
+            show(messageLabel: "Address missing or incorrect")
             return
         }
         
         guard let amount = amountTextField.text?.doubleValue,
             amount > 0 else {
             
-            messageLabel.text = "Enter a valid amount"
+            show(messageLabel: "Enter a valid amount")
             return
         }
         
@@ -152,11 +151,18 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
                 
                 DispatchQueue.main.async {[weak self] in
                     
-                    self?.messageLabel.text = message
-                    self?.tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
+                    self?.show(messageLabel: message)
                 }
+                
+                self.view.endEditing(true)
             })
         }
+    }
+    
+    func show(messageLabel message: String) {
+        
+        messageLabel.text = message
+        tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
     }
     
     
