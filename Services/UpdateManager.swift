@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class UpdateManager {
     
-    static func update(user: String, completion:@escaping((Bool, String?) -> Void)) {
+    static func update(user: String, withPassword password: String, completion:@escaping((Bool, String?) -> Void)) {
         
-        NetworkProvider.fetchJSON(forUser: user) { (updated, message) in
+        NetworkProvider.fetchJSON(forUser: user, withPassword: password) { (updated, message) in
             
             completion(updated, message)
         }
@@ -97,7 +97,6 @@ class UpdateManager {
         CoreDataProvider.shared.managedObjectContext.perform {
             
             User.currentUser()?.addToTransactions(Transaction.newOutTransaction(from: dict))
-
         }
         
         CoreDataProvider.shared.save()

@@ -23,12 +23,13 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="balance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Balance" inverseName="user" inverseEntity="Balance" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="user" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <elements>
         <element name="Balance" positionX="-848" positionY="-54" width="128" height="118"/>
         <element name="Transaction" positionX="-236" positionY="-25" width="128" height="193"/>
-        <element name="User" positionX="-587" positionY="-423" width="128" height="118"/>
+        <element name="User" positionX="-587" positionY="-423" width="128" height="135"/>
     </elements>
 </model>

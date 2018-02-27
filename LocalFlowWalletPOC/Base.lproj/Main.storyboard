@@ -179,6 +179,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-2w-uNG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3q-QM-UYY">
                                 <rect key="frame" x="166" y="231" width="0.0" height="0.0"/>
@@ -190,22 +191,39 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="gP3-v6-WYI">
                                 <rect key="frame" x="40" y="60" width="240" height="378.5"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo white " translatesAutoresizingMaskIntoConstraints="NO" id="i1R-P4-qG4">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="95"/>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="8Kt-AT-g0n">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="231"/>
+                                        <rect key="frame" x="0.0" y="137" width="240" height="178"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo white " translatesAutoresizingMaskIntoConstraints="NO" id="i1R-P4-qG4">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="163"/>
-                                            </imageView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q7O-YR-mlY">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yVO-2x-wzB">
-                                                <rect key="frame" x="0.0" y="201" width="240" height="30"/>
+                                                <rect key="frame" x="0.0" y="68" width="240" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEW-sP-hNd">
+                                                <rect key="frame" x="0.0" y="136" width="240" height="42"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleShadowColor" red="0.0" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="loginButtonPressed:" destination="RoL-pl-CgU" eventType="touchUpInside" id="0nf-NL-SXE"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pal-1J-BzM">
-                                        <rect key="frame" x="0.0" y="273" width="240" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="357" width="240" height="21.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21.5" id="Z6j-Ro-aJ5"/>
                                         </constraints>
@@ -213,17 +231,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEW-sP-hNd">
-                                        <rect key="frame" x="0.0" y="336.5" width="240" height="42"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleShadowColor" red="0.0" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="loginButtonPressed:" destination="RoL-pl-CgU" eventType="touchUpInside" id="0nf-NL-SXE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="378.5" id="h2e-lh-jeA"/>
@@ -231,6 +238,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="s6h-2w-uNG" firstAttribute="top" secondItem="nE3-0q-621" secondAttribute="top" id="4Fp-CR-LZE"/>
                             <constraint firstItem="s6h-2w-uNG" firstAttribute="bottom" secondItem="JxN-3r-LDg" secondAttribute="bottom" id="7PI-2a-EJA"/>
@@ -246,6 +254,7 @@
                         <outlet property="errorLabel" destination="pal-1J-BzM" id="07V-oy-rH2"/>
                         <outlet property="loginButton" destination="EEW-sP-hNd" id="Igz-C7-T9R"/>
                         <outlet property="passwordTextView" destination="yVO-2x-wzB" id="gje-fs-6oh"/>
+                        <outlet property="usernameTextView" destination="Q7O-YR-mlY" id="ehG-4d-yuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrR-9l-i2C" userLabel="First Responder" sceneMemberID="firstResponder"/>

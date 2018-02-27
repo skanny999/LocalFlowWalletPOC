@@ -60,5 +60,22 @@ extension SearchTextField {
         }
     }
 }
+
+
+extension LoginViewController {
+    
+    func hideKeyboard() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        
+        view.endEditing(true)
+    }
+
+}
     
 

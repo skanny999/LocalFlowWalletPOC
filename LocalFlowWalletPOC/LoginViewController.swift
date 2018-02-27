@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var usernameTextView: UITextField!
     @IBOutlet var passwordTextView: UITextField!
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var loginButton: UIButton!
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextView.becomeFirstResponder()
         passwordTextView.delegate = self
         loginButton.layer.cornerRadius = 8
+        hideKeyboard()
     }
 
     
@@ -36,15 +38,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
+
     
     fileprivate func login() {
         
-        if let password = passwordTextView.text {
+        if let password = passwordTextView.text, let username = usernameTextView.text {
             
-            UpdateManager.update(user: password, completion: { (updated, message) in
+            UpdateManager.update(user: username, withPassword: password, completion: { (updated, message) in
                 
                 if updated {
+                    
+                    User.currentUser()?.password = password
+                    CoreDataProvider.shared.save()
                     
                     self.dismiss(animated: true, completion: nil)
                     

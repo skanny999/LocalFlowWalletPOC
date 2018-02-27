@@ -31,9 +31,9 @@ class NetworkProvider {
     }
     
     
-    static func fetchJSON(forUser name: String, completion:@escaping ((Bool, String?) -> Void)) {
+    static func fetchJSON(forUser name: String, withPassword password: String, completion:@escaping ((Bool, String?) -> Void)) {
         
-        let fetchUrl = url(for: name)
+        let fetchUrl = url(for: name, andPassword: password)
         
         Alamofire.request(fetchUrl).responseJSON { (response) in
             
@@ -92,16 +92,15 @@ class NetworkProvider {
                 
                 completion(false, message)
             }
-            
         }
     }
     
     
     static func contactsUrl() -> URL {
         
-        if let userName = User.currentUser()?.nickname {
+        if let userName = User.currentUser()?.nickname, let password = User.currentUser()?.password {
             
-            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?password=\(userName)")!
+            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?username=\(userName)&password=\(password)")!
             
         } else {
             
@@ -109,9 +108,9 @@ class NetworkProvider {
         }
     }
     
-    static func url(for name: String) -> URL {
+    static func url(for name: String, andPassword password: String) -> URL {
         
-        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/riccardo?username=riccardo&password=RICCA7070")!
+        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)")!
     }
     
     static func urlRequest(to user: String, with json: Data) -> URLRequest {

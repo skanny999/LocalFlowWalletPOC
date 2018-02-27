@@ -168,11 +168,11 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     
     func transactionJson(for amount: Double) -> Data? {
         
-        guard let user = User.currentUsers()?.first, let nickname = user.nickname else { fatalError("No User") }
+        guard let user = User.currentUser(), let nickname = user.nickname, let password = user.password else { fatalError("No User") }
 
         let transactionDict = ["amount" : amount, "currency" : currentCurrency.rawValue.lowercased()] as [String : Any]
         
-        let dict = ["password" : nickname, "tx" : transactionDict] as [String : Any]
+        let dict = ["username" : nickname,  "password" : password, "tx" : transactionDict] as [String : Any]
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)

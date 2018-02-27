@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  LocalFlowWalletPOC
 //
-//  Created by Riccardo Scanavacca on 10/02/2018.
+//  Created by Riccardo Scanavacca on 27/02/2018.
 //  Copyright © 2018 Test. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension User {
     @NSManaged public var email: String?
     @NSManaged public var id: String?
     @NSManaged public var nickname: String?
+    @NSManaged public var password: String?
     @NSManaged public var balance: Balance?
     @NSManaged public var transactions: NSSet?
 
