@@ -40,14 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let balance = Balance.currentBalance() {
             
-            CoreDataProvider.shared.backgroundManagedObjectContext.delete(balance)
+            CoreDataProvider.shared.managedObjectContext.delete(balance)
         }
         
         if let transactions = Transaction.allTransactions() {
             
             for transaction in transactions {
                 
-                CoreDataProvider.shared.backgroundManagedObjectContext.delete(transaction)
+                CoreDataProvider.shared.managedObjectContext.delete(transaction)
             }
         }
         

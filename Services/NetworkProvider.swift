@@ -111,7 +111,7 @@ class NetworkProvider {
     
     static func url(for name: String) -> URL {
         
-        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?password=\(name)")!
+        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/riccardo?username=riccardo&password=RICCA7070")!
     }
     
     static func urlRequest(to user: String, with json: Data) -> URLRequest {

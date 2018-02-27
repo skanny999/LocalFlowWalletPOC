@@ -25,8 +25,7 @@ class UpdateManager {
         
         var user: User?
         
-        CoreDataProvider.shared.backgroundManagedObjectContext.perform {
-            
+
             let userDict = json["user"] as! [String : Any]
             
             user = User.newUser(from: userDict)
@@ -61,7 +60,7 @@ class UpdateManager {
 
                         }
                     }
-                }
+                
             }
 
             CoreDataProvider.shared.save()

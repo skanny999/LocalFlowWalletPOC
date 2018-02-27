@@ -11,19 +11,10 @@ import Foundation
 import CoreData
 
 class CoreDataProvider {
-    
-    var managedObjectContext : NSManagedObjectContext
-    var backgroundManagedObjectContext : NSManagedObjectContext
-    
-    static let shared = CoreDataProvider()
-        
-    private init(){
-        
-        managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        backgroundManagedObjectContext.parent = managedObjectContext
-    }
 
+    static let shared = CoreDataProvider()
+
+    let managedObjectContext : NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func newUser() -> User {
         
@@ -105,12 +96,8 @@ class CoreDataProvider {
 
     
     func save() {
-        
-        do {
-            
-            try backgroundManagedObjectContext.save()
-            
-            managedObjectContext.perform {
+
+        managedObjectContext.performAndWait {
                 
                 do {
                     try self.managedObjectContext.save()
@@ -120,10 +107,7 @@ class CoreDataProvider {
                     fatalError("Failure to save context: \(error)")
                 }
             }
-        } catch {
-            
-            fatalError("Failure to save context: \(error)")
-        }
+
     }
   
 }

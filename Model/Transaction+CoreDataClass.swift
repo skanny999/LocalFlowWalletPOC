@@ -84,10 +84,15 @@ public class Transaction: NSManagedObject {
             transaction.updatedAt = date
         }
         
-        if let confirmedString = dict[key.id] as? String {
+        if let confirmedString = dict[key.status] as? String {
             
-            transaction.confirmed = confirmedString == "confirmed" ? true : false            
+            transaction.confirmed = confirmedString == "confirmed" ? true : false
+            
+            print(confirmedString.description)
+            
         }
+        
+        print(transaction.confirmed)
 
         return transaction
     }
