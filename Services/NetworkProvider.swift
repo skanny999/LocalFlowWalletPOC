@@ -52,6 +52,9 @@ class NetworkProvider {
             if response.response?.statusCode == 200 {
                 
                 let updateManager = UpdateManager()
+                
+                
+                
                 updateManager.processUserJSON(json: json, completion: { (processed) in
                     
                     completion(processed, nil)

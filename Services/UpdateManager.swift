@@ -20,75 +20,88 @@ class UpdateManager {
         }
     }
     
+    
+    static func updateNewTransactions(completion:@escaping (Bool) -> Void) {
 
-    func processUserJSON(json: [String : Any], completion:@escaping ((Bool) -> Void)) {
-        
-        var user: User?
-        
-
-            let userDict = json["user"] as! [String : Any]
+        if let user = User.currentUser() {
             
-            user = User.newUser(from: userDict)
+            let transactionsCount = Transaction.allTransactions()?.count
             
-            if let balanceDict = userDict["balance"] {
+            update(user: user.nickname!, withPassword: user.password!, completion: { (updated, message) in
                 
-                let balance = Balance.newBalance(from: balanceDict as! [String : Any])
-                
-                print("Balance:\(balance.debugDescription)")
-                
-                user!.balance = balance
-                
-            }
-            
-            if let tranOut = userDict["txes_out"] {
-                
-                if let transactions = tranOut as? Array<Any> {
+                if updated {
                     
-                    for transaction in transactions {
-
-                            user?.addToTransactions(Transaction.newOutTransaction(from: transaction as! [String : Any]))
+                    if transactionsCount != Transaction.allTransactions()?.count {
+                        
+                        completion(true)
                     }
                 }
-                
-                if let tranIn = userDict["txes_in"] {
+            })
+        }
+    }
 
-                    if let transactions = tranIn as? Array<Any> {
+    
+    fileprivate func addIncomingTransactions(fromDict dict: [String : Any], to user: User) {
+        
+        if let allTransactions = Transaction.allTransactions() {
+        
+            let transactionIds = allTransactions.map({ $0.id! })
+            
+            if let transIn = dict["txes_in"] as? [[String : Any]] {
+
+                for transDict in transIn {
+                    
+                    if let id = transDict["id"] as? String {
                         
-                        for transaction in transactions {
-
-                            user?.addToTransactions(Transaction.newInTransaction(from: transaction as! [String : Any]))
-
+                        if !transactionIds.contains(id) {
+                            
+                            user.addToTransactions(Transaction.newInTransaction(from: transDict))
+                            
+                        } else {
+                            
+                            updateStatus(of: allTransactions, withId: id, transDict)
                         }
                     }
-                
+                }
             }
-
-            CoreDataProvider.shared.save()
             
-            completion(true)
+        } else {
             
-            print("User: \(user.debugDescription)")
+            addTransactionsIn(fromDict: dict, to: user)
         }
     }
     
-    
-    func process(_ transaction: Transaction, for user: User) {
-        
-        if let allTransactions = Transaction.allTransactions() {
-            
-            if allTransactions.contains(transaction) {
-                
-                user.addToTransactions(transaction)
-                
-            } else {
-                
-                CoreDataProvider.shared.managedObjectContext.delete(transaction)
-            }
 
+    func processUserJSON(json: [String : Any], completion:@escaping ((Bool) -> Void)) {
+        
+        let userDict = json["user"] as! [String : Any]
+        
+        if let user = User.currentUser() {
+            
+            addIncomingTransactions(fromDict: userDict, to: user)
+            
         } else {
             
-            user.addToTransactions(transaction)
+            processNewUser(withJSON: userDict)
+            
         }
+        
+        CoreDataProvider.shared.save()
+        
+        completion(true)
+    }
+
+
+
+    func processNewUser(withJSON json: [String : Any]) {
+        
+        let user = User.newUser(from: json)
+        
+        addBalance(fromDict: json, to: user)
+        
+        addTransactionsOut(fromDict: json, to:user)
+        
+        addTransactionsIn(fromDict: json, to: user)
     }
     
     
@@ -97,6 +110,103 @@ class UpdateManager {
         CoreDataProvider.shared.managedObjectContext.perform {
             
             User.currentUser()?.addToTransactions(Transaction.newOutTransaction(from: dict))
+        }
+        
+        CoreDataProvider.shared.save()
+    }
+    
+    
+    
+    
+    fileprivate func addTransactionsIn(fromDict json: [String : Any], to user: User) {
+        
+        if let tranIn = json["txes_in"] {
+            
+            if let transactions = tranIn as? Array<Any> {
+                
+                for transaction in transactions {
+                    
+                    user.addToTransactions(Transaction.newInTransaction(from: transaction as! [String : Any]))
+                }
+            }
+        }
+    }
+    
+    
+    fileprivate func addTransactionsOut(fromDict json: [String : Any], to user: User) {
+        
+        if let tranOut = json["txes_out"] {
+            
+            if let transactions = tranOut as? Array<Any> {
+                
+                for transaction in transactions {
+                    
+                    user.addToTransactions(Transaction.newOutTransaction(from: transaction as! [String : Any]))
+                }
+            }
+        }
+    }
+    
+    
+    fileprivate func addBalance(fromDict json: [String : Any], to user: User) {
+        
+        if let balanceDict = json["balance"] {
+            
+            let balance = Balance.newBalance(from: balanceDict as! [String : Any])
+            user.balance = balance
+        }
+    }
+    
+    
+    func updateStatus(of allTransactions:[Transaction], withId id:String, _ transDict:[String : Any]) {
+        
+        let transactions = allTransactions.filter{ $0.id! == id }
+        
+        if let transaction = transactions.first {
+            
+            let inTransactionConfirmed = transDict["status"] as!  String == "confirmed" ? true : false
+            
+            if transaction.confirmed != inTransactionConfirmed {
+                
+                transaction.confirmed = inTransactionConfirmed
+            }
+        }
+    }
+    
+    
+    static func logout() {
+        
+        if let users = User.currentUsers() {
+            
+            for user in users {
+                
+                if let balance = user.balance {
+                    
+                    CoreDataProvider.shared.managedObjectContext.delete(balance)
+                }
+                
+                if let transactions = user.transactions {
+                    
+                    for transaction in transactions {
+                        
+                        CoreDataProvider.shared.managedObjectContext.delete(transaction as! Transaction)
+                    }
+                }
+                CoreDataProvider.shared.managedObjectContext.delete(user)
+            }
+        }
+        
+        if let balance = Balance.currentBalance() {
+            
+            CoreDataProvider.shared.managedObjectContext.delete(balance)
+        }
+        
+        if let transactions = Transaction.allTransactions(), transactions.count > 0 {
+            
+            for transaction in transactions {
+                
+                CoreDataProvider.shared.managedObjectContext.delete(transaction)
+            }
         }
         
         CoreDataProvider.shared.save()

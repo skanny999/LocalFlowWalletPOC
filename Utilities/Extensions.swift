@@ -77,5 +77,16 @@ extension LoginViewController {
     }
 
 }
+
+
+extension UserViewController {
+    
+    func showNewTransactionAlert() {
+        
+        let alert = UIAlertController(title: "Transaction", message: "New transaction received", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+}
     
 

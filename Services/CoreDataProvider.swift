@@ -51,7 +51,6 @@ class CoreDataProvider {
                 
                 completion(user)
             }
-
         }
     }
     

@@ -14,6 +14,7 @@ class UserViewController: UITableViewController {
     var fetchedResultsController: NSFetchedResultsController<Transaction>!
     
     var user: User?
+    var helloWorldTimer: Timer?
     
     @IBOutlet var ewaAmountLabel: UILabel!
     @IBOutlet var euroAmountLabel: UILabel!
@@ -22,11 +23,39 @@ class UserViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        helloWorldTimer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
 
         configureFetchedResultsController()
         tableView.setBackgroundImage()
-
     }
+    
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        
+        logout()
+    }
+    
+    
+    fileprivate func logout() {
+        
+        UpdateManager.logout()
+        
+        self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
+    }
+    
+    
+    @objc func checkForNewTransactions() {
+        
+        UpdateManager.updateNewTransactions { [weak self] (transactionAdded) in
+            
+            if transactionAdded {
+                
+                self?.showNewTransactionAlert()
+            }
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,6 +63,7 @@ class UserViewController: UITableViewController {
         performFetch()
         loadUser()
     }
+    
     
     fileprivate func loadUser() {
         
@@ -47,8 +77,6 @@ class UserViewController: UITableViewController {
             configureLabels()
         }
     }
-    
-
     
     
     func configureLabels() {
@@ -81,10 +109,6 @@ class UserViewController: UITableViewController {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-    
-
-
-
 }
 
 

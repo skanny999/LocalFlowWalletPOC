@@ -16,40 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if let users = User.currentUsers() {
-            
-            for user in users {
-                
-                if let balance = user.balance {
-                    
-                    CoreDataProvider.shared.managedObjectContext.delete(balance)
-                }
-                
-                if let transactions = user.transactions {
-                    
-                    for transaction in transactions {
-                        
-                        CoreDataProvider.shared.managedObjectContext.delete(transaction as! Transaction)
-                    }
-                }
-                CoreDataProvider.shared.managedObjectContext.delete(user)
-            }
-            
-            
-        }
-        
-        if let balance = Balance.currentBalance() {
-            
-            CoreDataProvider.shared.managedObjectContext.delete(balance)
-        }
-        
-        if let transactions = Transaction.allTransactions() {
-            
-            for transaction in transactions {
-                
-                CoreDataProvider.shared.managedObjectContext.delete(transaction)
-            }
-        }
+        UpdateManager.logout()
         
         return true
     }

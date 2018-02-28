@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         errorLabel.text = nil
-        passwordTextView.becomeFirstResponder()
+        usernameTextView.becomeFirstResponder()
         passwordTextView.delegate = self
         loginButton.layer.cornerRadius = 8
         hideKeyboard()

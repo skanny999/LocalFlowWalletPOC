@@ -15,7 +15,7 @@ post_install do |installer|
         plist = "Pods/Target Support Files/#{target}/Info.plist"
         `#{plist_buddy} -c "Add UIRequiredDeviceCapabilities array" "#{plist}"`
         `#{plist_buddy} -c "Add UIRequiredDeviceCapabilities:0 string arm64" "#{plist}"`
+        end
     end
-end
 
 end

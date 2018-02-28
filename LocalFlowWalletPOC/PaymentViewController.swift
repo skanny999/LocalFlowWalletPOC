@@ -34,6 +34,12 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         configureNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateLabel(with: "")
+    }
+    
     
     
     
@@ -134,30 +140,35 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
             self?.messageTextField.text = nil
         }
     }
-    
-    
 
     
     func sendPayment(for amount: Double, to recipient: String) {
         
         if let data = transactionJson(for: amount) {
             
-            NetworkProvider.post(data, to: recipient, completion: { [unowned self] (postWasSuccesful, message) in
+            NetworkProvider.post(data, to: recipient, completion: { [weak self] (postWasSuccesful, message) in
 
                 if postWasSuccesful {
                     
-                    self.resetFields()
+                    self?.resetFields()
                 }
                 
-                DispatchQueue.main.async {[weak self] in
-                    
-                    self?.show(messageLabel: message)
-                }
-                
-                self.view.endEditing(true)
+                self?.updateLabel(with: message)
+
+                self?.view.endEditing(true)
             })
         }
     }
+    
+    
+    fileprivate func updateLabel(with message:String) {
+        
+        DispatchQueue.main.async {[weak self] in
+            
+            self?.show(messageLabel: message)
+        }
+    }
+    
     
     func show(messageLabel message: String) {
         

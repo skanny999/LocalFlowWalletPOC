@@ -88,11 +88,7 @@ public class Transaction: NSManagedObject {
             
             transaction.confirmed = confirmedString == "confirmed" ? true : false
             
-            print(confirmedString.description)
-            
         }
-        
-        print(transaction.confirmed)
 
         return transaction
     }
@@ -105,13 +101,4 @@ public class Transaction: NSManagedObject {
 }
 
 
-//extension Transaction: Equatable {
-//
-//        static func == (lhs: Transaction, rhs: Transaction) -> Bool {
-//
-//
-//            lhs.id == rhs.id
-//        }
-//
-//}
 
