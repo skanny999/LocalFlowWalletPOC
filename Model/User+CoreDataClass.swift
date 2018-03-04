@@ -13,7 +13,6 @@ import CoreData
 @objc(User)
 public class User: NSManagedObject {
     
-    
     struct keys {
         
         let id = "id"

@@ -21,6 +21,7 @@ class UserViewController: UITableViewController {
     @IBOutlet var euroAmountLabel: UILabel!
     @IBOutlet var iotaAmountLabel: UILabel!
 
+    @IBOutlet var balanceView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +37,29 @@ class UserViewController: UITableViewController {
         
         logout()
     }
-    
-    
+
     fileprivate func logout() {
         
         UpdateManager.logout()
         
         self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
+    }
+    
+    fileprivate func addGestureToBalanceView() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.showFullBalance))
+        
+        balanceView.addGestureRecognizer(tap)
+    }
+    
+    @objc func showFullBalance() {
+        
+        // pass the user
+        
+        // present view with balance
+        
+        
+        
     }
     
     
@@ -85,9 +102,9 @@ class UserViewController: UITableViewController {
         if let user = user {
             
             navigationController?.navigationBar.topItem?.title = user.nickname?.capitalized
-            ewaAmountLabel.text = "\(user.balance?.ewa ?? "0") EWA"
-            euroAmountLabel.text = "\(user.balance?.eur ?? "0") Euros"
-            iotaAmountLabel.text = "\(user.balance?.iota ?? "0") Iota"
+            ewaAmountLabel.text = "\(user.balance?.ewa ?? 0) EWA"
+            euroAmountLabel.text = "\(user.balance?.eur ?? 0) Euros"
+            iotaAmountLabel.text = "\(user.balance?.iota ?? 0) Iota"
         }
     }
     

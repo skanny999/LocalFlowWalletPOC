@@ -36,7 +36,6 @@ public class Balance: NSManagedObject {
             
             fatalError("Failed to fetch user: \(error)")
         }
-        
     }
     
     static func newBalance(from dict: [String : Any]) -> Balance {
@@ -45,9 +44,10 @@ public class Balance: NSManagedObject {
         let key = keys()
         
         balance.userId = dict[key.userId] as? String
-        balance.ewa = dict[key.ewa] as? String
-        balance.eur = dict[key.eur] as? String
-        balance.iota = dict[key.iota] as? String
+        
+        balance.ewa = dict[key.ewa] as? Double ?? 0.0
+        balance.eur = dict[key.eur] as? Double ?? 0.0
+        balance.iota = dict[key.iota] as? Int64 ?? 0
         
         return balance
     }

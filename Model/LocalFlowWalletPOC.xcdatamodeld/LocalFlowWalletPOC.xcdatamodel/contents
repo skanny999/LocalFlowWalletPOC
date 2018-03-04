@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Balance" representedClassName="Balance" syncable="YES">
-        <attribute name="eur" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ewa" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="iota" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eur" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ewa" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="iota" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="balance" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
-        <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="confirmed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromNickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iotaId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iotaTxHref" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outgoing" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="toNickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -28,8 +30,8 @@
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="user" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Balance" positionX="-848" positionY="-54" width="128" height="118"/>
-        <element name="Transaction" positionX="-236" positionY="-25" width="128" height="193"/>
+        <element name="Balance" positionX="-848" positionY="-54" width="128" height="120"/>
+        <element name="Transaction" positionX="-236" positionY="-25" width="128" height="225"/>
         <element name="User" positionX="-587" positionY="-423" width="128" height="135"/>
     </elements>
 </model>

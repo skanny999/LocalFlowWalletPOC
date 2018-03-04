@@ -2,7 +2,7 @@
 //  Balance+CoreDataProperties.swift
 //  LocalFlowWalletPOC
 //
-//  Created by Riccardo Scanavacca on 10/02/2018.
+//  Created by Riccardo Scanavacca on 04/03/2018.
 //  Copyright © 2018 Test. All rights reserved.
 //
 //
@@ -17,10 +17,10 @@ extension Balance {
         return NSFetchRequest<Balance>(entityName: "Balance")
     }
 
-    @NSManaged public var eur: String?
-    @NSManaged public var ewa: String?
+    @NSManaged public var eur: Double
+    @NSManaged public var ewa: Double
+    @NSManaged public var iota: Int64
     @NSManaged public var userId: String?
-    @NSManaged public var iota: String?
     @NSManaged public var user: User?
 
 }

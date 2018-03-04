@@ -24,7 +24,7 @@ public class Transaction: NSManagedObject {
         let created = "created_at"
         let updated = "updated_at"
         let iotaId = "iota_tx_id"
-        let iotaHref = "iota_tx_href"
+        let iotaTxHref = "iota_tx_href"
     }
     
     static func allTransactions() -> [Transaction]? {
@@ -69,12 +69,10 @@ public class Transaction: NSManagedObject {
         transaction.id = dict[key.id] as? String
         transaction.fromNickname = dict[key.fromNick] as? String
         transaction.toNickname = dict[key.toNick] as? String
-        transaction.amount = dict[key.amount] as? String
         transaction.currency = dict[key.currency] as? String
         transaction.outgoing = outgoing
         transaction.iotaId = dict[key.iotaId] as? String
-        transaction.iotaHref = dict[key.iotaHref] as? String
-        
+        transaction.iotaTxHref = dict[key.iotaTxHref] as? String
         
         if let createdString = dict[key.created] as? String {
 
@@ -94,9 +92,30 @@ public class Transaction: NSManagedObject {
             transaction.confirmed = confirmedString == "confirmed" ? true : false
             
         }
+        
+        if transaction.currency == "iota" {
+            
+            if let iotaAmount = dict[key.amount] as? Int {
+                
+                transaction.amount = Double(iotaAmount)
+                
+            } else {
+                
+                transaction.amount = 0
+            }
+            
+        } else {
+            
+            if let amount = dict[key.amount] as? String {
+                
+                transaction.amount = Double(amount) ?? 0
+                
+            }
+        }
 
         return transaction
     }
+    
     
     static func == (lhs: Transaction, rhs: Transaction) -> Bool {
 

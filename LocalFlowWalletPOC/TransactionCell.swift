@@ -23,9 +23,9 @@ class TransactionCell: UITableViewCell {
         formatter.locale = Locale(identifier: "en_GB")
         formatter.dateStyle = .short
         
-        if let amount = transaction.amount, let currency = transaction.currency?.uppercased() {
+        if let currency = transaction.currency?.uppercased() {
             
-            amountLabel.text = "\(amount) \(currency)"
+            amountLabel.text = "\(transaction.amount.rounded()) \(currency)"
         }
         
         if let creationDate = transaction.createdAt {

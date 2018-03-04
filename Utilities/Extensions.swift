@@ -30,7 +30,24 @@ extension String {
         
         return NumFormatter.instance.number(from: self)?.intValue
     }
+}
 
+extension Double {
+    
+    func roundToDecimal(_ fractionDigits: Int) -> Double {
+        let multiplier = pow(10, Double(fractionDigits))
+        return Darwin.round(self * multiplier) / multiplier
+    }
+    
+    func roundedString() -> String {
+        
+        return String(roundToDecimal(2))
+    }
+    
+    func roundedAsIntString() -> String {
+        
+        return String(roundToDecimal(0))
+    }
 }
 
 extension UITableView {

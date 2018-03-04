@@ -59,14 +59,22 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     fileprivate func barTitle() -> String {
-
+ 
         switch currentCurrency {
+            
         case .ewa:
-            return User.currentUser()?.balance?.ewa ?? "0"
+            return User.currentUser()?.balance?.ewa.roundedString() ?? "0"
         case .iota:
-            return User.currentUser()?.balance?.iota ?? "0"
+            if let iotaAmount = User.currentUser()?.balance?.iota {
+                
+                return Double(iotaAmount).roundedAsIntString()
+                
+            } else {
+                
+                return "0"
+            }
         case .euro:
-            return User.currentUser()?.balance?.eur ?? "0"
+            return User.currentUser()?.balance?.eur.roundedString() ?? "0"
         }
     }
     

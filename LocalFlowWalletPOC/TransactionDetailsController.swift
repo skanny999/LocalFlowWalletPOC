@@ -18,9 +18,12 @@ class TransactionDetailsController: UITableViewController {
     @IBOutlet var confirmationLabel: UILabel!
     @IBOutlet var iotaTxIdLabel: UILabel!
     
+    @IBOutlet var viewTransactionButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.setBackgroundImage()
+        viewTransactionButton.layer.cornerRadius = 8
         configureDetails()
         
     }
@@ -96,10 +99,24 @@ class TransactionDetailsController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "TRANSACTION_SEGUE" {
+            
+            let destination = segue.destination as! TransactionWebViewController
+            
+            if let txLink = transaction?.iotaTxHref {
+                
+                destination.transactionUrlString = txLink
+            }
+        }
+    }
+    
+    
     
     func isIotaTransaction() -> Bool {
         
-        guard let _ = transaction?.iotaId, let _ = transaction?.iotaHref else { return false }
+        guard let _ = transaction?.iotaId, let _ = transaction?.iotaTxHref else { return false }
         
         return true
     }
