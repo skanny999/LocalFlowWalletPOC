@@ -2,7 +2,7 @@
 //  Transaction+CoreDataProperties.swift
 //  LocalFlowWalletPOC
 //
-//  Created by Riccardo Scanavacca on 19/02/2018.
+//  Created by Riccardo Scanavacca on 03/03/2018.
 //  Copyright © 2018 Test. All rights reserved.
 //
 //
@@ -26,6 +26,8 @@ extension Transaction {
     @NSManaged public var outgoing: Bool
     @NSManaged public var toNickname: String?
     @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var iotaId: String?
+    @NSManaged public var iotaHref: String?
     @NSManaged public var user: User?
 
 }

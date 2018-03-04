@@ -23,8 +23,15 @@ class TransactionCell: UITableViewCell {
         formatter.locale = Locale(identifier: "en_GB")
         formatter.dateStyle = .short
         
-        amountLabel.text = "\(transaction.amount!) \(transaction.currency!.uppercased())"
-        dateLabel.text = formatter.string(from: transaction.createdAt! as Date)
+        if let amount = transaction.amount, let currency = transaction.currency?.uppercased() {
+            
+            amountLabel.text = "\(amount) \(currency)"
+        }
+        
+        if let creationDate = transaction.createdAt {
+            
+            dateLabel.text = formatter.string(from: creationDate as Date)
+        }
         
         if transaction.outgoing {
             

@@ -11,10 +11,11 @@ import CoreData
 
 class UserViewController: UITableViewController {
     
-    var fetchedResultsController: NSFetchedResultsController<Transaction>!
+    let fetchedResultsController = CoreDataProvider.shared.transactionsFetchResultController()
     
     var user: User?
-    var helloWorldTimer: Timer?
+    var timer: Timer?
+    var selectedTransaction: Transaction?
     
     @IBOutlet var ewaAmountLabel: UILabel!
     @IBOutlet var euroAmountLabel: UILabel!
@@ -24,7 +25,7 @@ class UserViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        helloWorldTimer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
 
         configureFetchedResultsController()
         tableView.setBackgroundImage()
@@ -93,7 +94,7 @@ class UserViewController: UITableViewController {
     
     func configureFetchedResultsController() {
         
-        fetchedResultsController = CoreDataProvider.shared.transactionsFetchResultController()
+//        fetchedResultsController = CoreDataProvider.shared.transactionsFetchResultController()
         fetchedResultsController.delegate = self
         
     }
@@ -147,8 +148,21 @@ extension UserViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.endEditing(true)
+        let transaction = fetchedResultsController.object(at: indexPath)
+        self.performSegue(withIdentifier: "DETAILS_SEGUE", sender: transaction)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "DETAILS_SEGUE" {
+
+            let destination = segue.destination as! TransactionDetailsController
+                
+            destination.transaction = sender as? Transaction
+        }
+    }
+
 }
 
 

@@ -23,6 +23,8 @@ public class Transaction: NSManagedObject {
         let status = "status"
         let created = "created_at"
         let updated = "updated_at"
+        let iotaId = "iota_tx_id"
+        let iotaHref = "iota_tx_href"
     }
     
     static func allTransactions() -> [Transaction]? {
@@ -70,6 +72,9 @@ public class Transaction: NSManagedObject {
         transaction.amount = dict[key.amount] as? String
         transaction.currency = dict[key.currency] as? String
         transaction.outgoing = outgoing
+        transaction.iotaId = dict[key.iotaId] as? String
+        transaction.iotaHref = dict[key.iotaHref] as? String
+        
         
         if let createdString = dict[key.created] as? String {
 
