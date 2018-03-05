@@ -93,6 +93,8 @@ public class Transaction: NSManagedObject {
             
         }
         
+        
+        
         if transaction.currency == "iota" {
             
             if let iotaAmount = dict[key.amount] as? Int {
@@ -106,11 +108,8 @@ public class Transaction: NSManagedObject {
             
         } else {
             
-            if let amount = dict[key.amount] as? String {
-                
-                transaction.amount = Double(amount) ?? 0
-                
-            }
+            transaction.amount = dict[key.amount] as? Double ?? 0
+
         }
 
         return transaction

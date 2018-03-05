@@ -20,8 +20,8 @@ class UserViewController: UITableViewController {
     @IBOutlet var ewaAmountLabel: UILabel!
     @IBOutlet var euroAmountLabel: UILabel!
     @IBOutlet var iotaAmountLabel: UILabel!
-
-    @IBOutlet var balanceView: UIView!
+ 
+    @IBOutlet var balanceStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,8 @@ class UserViewController: UITableViewController {
         timer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
 
         configureFetchedResultsController()
+        checkForNewTransactions()
+        addGestureToBalanceView()
         tableView.setBackgroundImage()
     }
     
@@ -49,16 +51,20 @@ class UserViewController: UITableViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.showFullBalance))
         
-        balanceView.addGestureRecognizer(tap)
+        balanceStackView.addGestureRecognizer(tap)
     }
     
     @objc func showFullBalance() {
         
-        // pass the user
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        // present view with balance
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "NAVIGATION") as! UINavigationController
         
+        let balanceViewController = navigationController.viewControllers.first as! BalanceViewController
         
+        balanceViewController.user = user
+        
+        present(navigationController, animated: true, completion: nil)
         
     }
     
@@ -102,8 +108,8 @@ class UserViewController: UITableViewController {
         if let user = user {
             
             navigationController?.navigationBar.topItem?.title = user.nickname?.capitalized
-            ewaAmountLabel.text = "\(user.balance?.ewa ?? 0) EWA"
-            euroAmountLabel.text = "\(user.balance?.eur ?? 0) Euros"
+            ewaAmountLabel.text = "\(user.balance?.ewa.roundedString() ?? "0.0") EWA"
+            euroAmountLabel.text = "\(user.balance?.eur.roundedString() ?? "0.0") Euros"
             iotaAmountLabel.text = "\(user.balance?.iota ?? 0) Iota"
         }
     }

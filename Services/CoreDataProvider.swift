@@ -87,7 +87,7 @@ class CoreDataProvider {
     func transactionFetchRequest() -> NSFetchRequest<Transaction> {
 
         let request = NSFetchRequest<Transaction>(entityName: "Transaction")
-        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
 
         return request
 

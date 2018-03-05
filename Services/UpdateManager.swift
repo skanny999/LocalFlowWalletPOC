@@ -62,6 +62,26 @@ class UpdateManager {
                             updateStatus(of: allTransactions, withId: id, transDict)
                         }
                     }
+                    
+                }
+            }
+            
+            if let transIn = dict["txes_out"] as? [[String : Any]] {
+                
+                for transDict in transIn {
+                    
+                    if let id = transDict["id"] as? String {
+                        
+                        if !transactionIds.contains(id) {
+                            
+                            user.addToTransactions(Transaction.newInTransaction(from: transDict))
+                            
+                        } else {
+                            
+                            updateStatus(of: allTransactions, withId: id, transDict)
+                        }
+                    }
+                    
                 }
             }
             
@@ -164,11 +184,22 @@ class UpdateManager {
         
         if let transaction = transactions.first {
             
-            let inTransactionConfirmed = transDict["status"] as!  String == "confirmed" ? true : false
+            print(transaction.id!)
             
-            if transaction.confirmed != inTransactionConfirmed {
+            let isTransactionConfirmed = transDict["status"] as! String == "confirmed" ? true : false
+            
+            if transaction.confirmed != isTransactionConfirmed {
                 
-                transaction.confirmed = inTransactionConfirmed
+                transaction.confirmed = isTransactionConfirmed
+                
+                if transaction.currency! == "iota" {
+                    
+                    if let tdId = transDict["iota_tx_id"] as? String, let txLink = transDict["iota_tx_href"] as? String {
+                        
+                        transaction.iotaId = tdId
+                        transaction.iotaTxHref = txLink
+                    }
+                }
             }
         }
     }

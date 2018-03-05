@@ -23,6 +23,7 @@ class TransactionDetailsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.setBackgroundImage()
+        self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.5333, saturation: 0.62, brightness: 0.62, alpha: 1.0)
         viewTransactionButton.layer.cornerRadius = 8
         configureDetails()
         
@@ -31,14 +32,13 @@ class TransactionDetailsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return isIotaTransaction() ? 4 : 3
+        return 4
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return isIotaTransaction() ? tableView.frame.size.height / 6 : tableView.frame.size.height / 5
- 
+        return tableView.frame.size.height / 6
     }
     
     
@@ -46,11 +46,12 @@ class TransactionDetailsController: UITableViewController {
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_GB")
-        formatter.dateStyle = .full
+        formatter.dateStyle = .long
         
         if let amount = transaction?.amount, let currency = transaction?.currency?.uppercased() {
             
-            amountLabel.text = "\(amount) \(currency)"
+            let formattedAmount = currency == "IOTA" ? "\(Int(amount))" : "\(amount)"
+            amountLabel.text = "\(formattedAmount) \(currency)"
         }
         
         
@@ -60,43 +61,34 @@ class TransactionDetailsController: UITableViewController {
                 
                 if let receiver = transaction?.toNickname {
                     
-                    userLabel.text = "To \(receiver)"
+                    userLabel.text = "Sent to \(receiver)"
                     
-                } else {
+                }
+                
+            } else {
+                
+                if let sender = transaction?.fromNickname {
                     
-                    if let sender = transaction?.fromNickname {
-                        
-                        userLabel.text = "From \(sender)"
-                    }
+                    userLabel.text = "Received from \(sender)"
                 }
             }
         }
         
         if let created = transaction?.createdAt {
             
-            transactionDateLabel.text = "Sent on \(formatter.string(from: created as Date))"
+            transactionDateLabel.text = "on the \(formatter.string(from: created as Date))"
             
         }
         
-        if let confirmed = transaction?.confirmed, confirmed {
-            
-            if let confirmationDate = transaction?.updatedAt {
-                
-                confirmationLabel.text = "Confirmed on \(formatter.string(from: confirmationDate as Date))"
-                
-            }
-            
-        } else {
-            
-            confirmationLabel.text = "Awaiting confirmation"
-            
+        if let confirmed = transaction?.confirmed {
+
+            confirmationLabel.text = confirmed ? "Transaction Confirmed" : "Awaiting confirmation"
         }
         
-        if isIotaTransaction() {
-            
-            iotaTxIdLabel.text = "Iota tx Id: \(transaction!.iotaId!)"
-            
-        }
+        viewTransactionButton.isEnabled = isIotaTransaction()
+
+        iotaTxIdLabel.text = isIotaTransaction() ? "Iota tx Id: \(transaction!.iotaId!)" : ""
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -116,7 +108,9 @@ class TransactionDetailsController: UITableViewController {
     
     func isIotaTransaction() -> Bool {
         
-        guard let _ = transaction?.iotaId, let _ = transaction?.iotaTxHref else { return false }
+        guard let transId = transaction?.iotaId, let transLink = transaction?.iotaTxHref else { return false }
+        
+        print(transId, transLink)
         
         return true
     }
