@@ -28,6 +28,12 @@ class CoreDataProvider {
         
     }
     
+    func newActualBalance() -> ActualBalance {
+        
+        return NSEntityDescription.insertNewObject(forEntityName: "ActualBalance", into: managedObjectContext) as! ActualBalance
+        
+    }
+    
     func newTransaction() -> Transaction {
         
         return NSEntityDescription.insertNewObject(forEntityName: "Transaction", into: managedObjectContext) as! Transaction

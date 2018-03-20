@@ -25,6 +25,7 @@ public class Transaction: NSManagedObject {
         let updated = "updated_at"
         let iotaId = "iota_tx_id"
         let iotaTxHref = "iota_tx_href"
+        let message = "message"
     }
     
     static func allTransactions() -> [Transaction]? {
@@ -37,6 +38,7 @@ public class Transaction: NSManagedObject {
             return fetchedTransactions
             
         } catch {
+            
             fatalError("Failed to fetch user: \(error)")
         }
         
@@ -65,7 +67,7 @@ public class Transaction: NSManagedObject {
                                    .withColonSeparatorInTimeZone,
                                    .withFullTime,
                                    .withFractionalSeconds]
-        
+
         transaction.id = dict[key.id] as? String
         transaction.fromNickname = dict[key.fromNick] as? String
         transaction.toNickname = dict[key.toNick] as? String
@@ -73,6 +75,12 @@ public class Transaction: NSManagedObject {
         transaction.outgoing = outgoing
         transaction.iotaId = dict[key.iotaId] as? String
         transaction.iotaTxHref = dict[key.iotaTxHref] as? String
+        transaction.message = dict[key.message] as? String
+        
+        if let message = transaction.message {
+            
+            print("Message: \(message)")
+        }
         
         if let createdString = dict[key.created] as? String {
 
@@ -114,7 +122,6 @@ public class Transaction: NSManagedObject {
 
         return transaction
     }
-    
     
     static func == (lhs: Transaction, rhs: Transaction) -> Bool {
 

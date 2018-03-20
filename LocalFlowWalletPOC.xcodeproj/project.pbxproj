@@ -13,6 +13,8 @@
 		8BA16B56204AF959006C832C /* TransactionDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B55204AF959006C832C /* TransactionDetailsController.swift */; };
 		8BA16B58204C412D006C832C /* TransactionWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B57204C412D006C832C /* TransactionWebViewController.swift */; };
 		8BA16B5A204C4B27006C832C /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B59204C4B27006C832C /* BalanceViewController.swift */; };
+		8BAE256E2061308100D6EF3A /* ActualBalance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE256C2061308100D6EF3A /* ActualBalance+CoreDataClass.swift */; };
+		8BAE256F2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE256D2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift */; };
 		8BB718D620332D3400A9040D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB718D520332D3400A9040D /* Extensions.swift */; };
 		8BCAEFB6203494690092B7BA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8BCAEFB5203494690092B7BA /* Podfile */; };
 		8BD6BC642030563500D9D8A7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6BC632030563500D9D8A7 /* Notifications.swift */; };
@@ -59,9 +61,12 @@
 		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.release.xcconfig"; sourceTree = "<group>"; };
 		8B327A252034C55C00C916A8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8B327A272034C5C300C916A8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalFlowWalletPOC 2.xcdatamodel"; sourceTree = "<group>"; };
 		8BA16B55204AF959006C832C /* TransactionDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsController.swift; sourceTree = "<group>"; };
 		8BA16B57204C412D006C832C /* TransactionWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebViewController.swift; sourceTree = "<group>"; };
 		8BA16B59204C4B27006C832C /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		8BAE256C2061308100D6EF3A /* ActualBalance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActualBalance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BAE256D2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActualBalance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BB718D520332D3400A9040D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BCAEFB5203494690092B7BA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8BD6BC632030563500D9D8A7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -206,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */,
+				8BAE256C2061308100D6EF3A /* ActualBalance+CoreDataClass.swift */,
+				8BAE256D2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift */,
 				8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */,
 				8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */,
 				8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */,
@@ -449,8 +456,10 @@
 				8BA16B58204C412D006C832C /* TransactionWebViewController.swift in Sources */,
 				8BFEBCBF202F42F60011346A /* Balance+CoreDataProperties.swift in Sources */,
 				8BD6BC662031BB4600D9D8A7 /* PaymentViewController.swift in Sources */,
+				8BAE256E2061308100D6EF3A /* ActualBalance+CoreDataClass.swift in Sources */,
 				8BA16B5A204C4B27006C832C /* BalanceViewController.swift in Sources */,
 				8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */,
+				8BAE256F2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift in Sources */,
 				8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */,
 				8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */,
 				8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */,
@@ -767,9 +776,10 @@
 		8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */,
 				8BFEBC8B202F35D20011346A /* LocalFlowWalletPOC.xcdatamodel */,
 			);
-			currentVersion = 8BFEBC8B202F35D20011346A /* LocalFlowWalletPOC.xcdatamodel */;
+			currentVersion = 8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */;
 			path = LocalFlowWalletPOC.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

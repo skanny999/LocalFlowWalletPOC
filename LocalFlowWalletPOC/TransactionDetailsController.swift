@@ -17,6 +17,7 @@ class TransactionDetailsController: UITableViewController {
     @IBOutlet var transactionDateLabel: UILabel!
     @IBOutlet var confirmationLabel: UILabel!
     @IBOutlet var iotaTxIdLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
     
     @IBOutlet var viewTransactionButton: UIButton!
     
@@ -26,7 +27,6 @@ class TransactionDetailsController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.5333, saturation: 0.62, brightness: 0.62, alpha: 1.0)
         viewTransactionButton.layer.cornerRadius = 8
         configureDetails()
-        
     }
     
     
@@ -46,7 +46,7 @@ class TransactionDetailsController: UITableViewController {
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_GB")
-        formatter.dateStyle = .long
+        formatter.dateFormat = "yyyy MMM HH:mm EEEE"
         
         if let amount = transaction?.amount, let currency = transaction?.currency?.uppercased() {
             
@@ -62,7 +62,6 @@ class TransactionDetailsController: UITableViewController {
                 if let receiver = transaction?.toNickname {
                     
                     userLabel.text = "Sent to \(receiver)"
-                    
                 }
                 
             } else {
@@ -74,21 +73,25 @@ class TransactionDetailsController: UITableViewController {
             }
         }
         
+        if let message = transaction?.message, !message.isEmpty {
+            
+            messageLabel.text = "Message:\n\n\(message)"
+        }
+        
         if let created = transaction?.createdAt {
             
-            transactionDateLabel.text = "on the \(formatter.string(from: created as Date))"
-            
+            transactionDateLabel.text = created.dateString()
         }
+        
         
         if let confirmed = transaction?.confirmed {
 
             confirmationLabel.text = confirmed ? "Transaction Confirmed" : "Awaiting confirmation"
         }
         
+        
         viewTransactionButton.isEnabled = isIotaTransaction()
-
         iotaTxIdLabel.text = isIotaTransaction() ? "Iota tx Id: \(transaction!.iotaId!)" : ""
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,5 +117,4 @@ class TransactionDetailsController: UITableViewController {
         
         return true
     }
-
 }

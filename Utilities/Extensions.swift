@@ -92,7 +92,6 @@ extension LoginViewController {
         
         view.endEditing(true)
     }
-
 }
 
 
@@ -104,6 +103,44 @@ extension UserViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
+}
+
+extension UIImageView {
+    
+    func arrowImage(isOutgoing:Bool) {
+        
+        self.image = isOutgoing ? #imageLiteral(resourceName: "arrow_out") : #imageLiteral(resourceName: "arrow_in")
+        self.tintColor = .white
+    }
+    
+    func confirmationImage(isConfirmed: Bool) {
+        
+        let green = UIColor(hue: 167/360, saturation: 100/100, brightness: 95/100, alpha: 1.0)
+        
+        self.image = isConfirmed ? #imageLiteral(resourceName: "double-tick") : #imageLiteral(resourceName: "checkmark")
+        self.tintColor = isConfirmed ? green : .yellow
+    }
+}
+
+
+extension NSDate {
+    
+    func dateString() -> String {
+        
+        let dateFormatter = DateFormatter()
+        let timeFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_GB")
+        
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        timeFormatter.dateFormat = "HH:mm:ss zzz"
+        
+        let dateString = dateFormatter.string(from: self as Date)
+        let timeString = timeFormatter.string(from: self as Date)
+        
+        return "\(dateString) at \(timeString)"
+    }
+    
 }
     
 

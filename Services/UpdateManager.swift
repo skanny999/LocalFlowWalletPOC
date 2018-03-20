@@ -62,7 +62,6 @@ class UpdateManager {
                             updateStatus(of: allTransactions, withId: id, transDict)
                         }
                     }
-                    
                 }
             }
             
@@ -81,7 +80,6 @@ class UpdateManager {
                             updateStatus(of: allTransactions, withId: id, transDict)
                         }
                     }
-                    
                 }
             }
             

@@ -117,9 +117,7 @@ class UserViewController: UITableViewController {
     
     func configureFetchedResultsController() {
         
-//        fetchedResultsController = CoreDataProvider.shared.transactionsFetchResultController()
         fetchedResultsController.delegate = self
-        
     }
     
     

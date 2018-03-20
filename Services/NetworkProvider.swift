@@ -114,13 +114,35 @@ class NetworkProvider {
     
     static func url(for name: String, andPassword password: String) -> URL {
         
-        return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)")!
+        var urlString: String
+        
+        if let name = name.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let password = password.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+            
+            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)"
+
+        } else {
+            
+            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)"
+        }
+        
+        return URL(string:urlString)!
     }
     
     
     static func urlRequest(to user: String, with json: Data) -> URLRequest {
         
-        let urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+        var urlString: String
+        
+        if let user = user.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+
+            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+
+        } else {
+        
+            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+        }
+    
         let url = URL(string: urlString)!
         
         var request = URLRequest(url: url)
