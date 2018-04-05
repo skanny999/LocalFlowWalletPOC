@@ -1,6 +1,6 @@
 //
 //  ActualBalance+CoreDataClass.swift
-//  LocalFlowWalletPOC
+//  LocalFlowWallet
 //
 //  Created by Riccardo Scanavacca on 20/03/2018.
 //  Copyright © 2018 Test. All rights reserved.
