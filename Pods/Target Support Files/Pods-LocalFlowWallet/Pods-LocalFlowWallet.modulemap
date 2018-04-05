@@ -1,0 +1,6 @@
+framework module Pods_LocalFlowWallet {
+  umbrella header "Pods-LocalFlowWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

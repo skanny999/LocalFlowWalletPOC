@@ -16,7 +16,7 @@
         <!--User View Controller-->
         <scene sceneID="z3f-z7-s8x">
             <objects>
-                <tableViewController id="86t-EJ-MxQ" customClass="UserViewController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="86t-EJ-MxQ" customClass="UserViewController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Fzd-g8-dTq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="QhS-HY-E7a" customClass="TransactionCell" customModule="LocalFlowWalletPOC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="QhS-HY-E7a" customClass="TransactionCell" customModule="LocalFlowWallet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="188.33333333333334" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QhS-HY-E7a" id="8b0-rN-NlM">
@@ -201,7 +201,7 @@
         <!--Transaction-->
         <scene sceneID="ddO-wT-vjl">
             <objects>
-                <tableViewController title="Transaction" id="bub-iY-VbR" customClass="TransactionDetailsController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Transaction" id="bub-iY-VbR" customClass="TransactionDetailsController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VuA-oC-d0Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -355,7 +355,7 @@
         <!--Transaction Web View Controller-->
         <scene sceneID="Bg9-E3-yax">
             <objects>
-                <viewController id="ruv-cE-LOF" customClass="TransactionWebViewController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ruv-cE-LOF" customClass="TransactionWebViewController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MVS-el-b6F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +407,7 @@
         <!--Login View Controller-->
         <scene sceneID="WMH-vA-I3K">
             <objects>
-                <viewController id="RoL-pl-CgU" customClass="LoginViewController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RoL-pl-CgU" customClass="LoginViewController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nE3-0q-621">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,7 +499,7 @@
         <!--BALANCE-->
         <scene sceneID="8TZ-S2-m2J">
             <objects>
-                <viewController id="HVf-Bm-hgS" customClass="BalanceViewController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HVf-Bm-hgS" customClass="BalanceViewController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0g-IE-2MX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,7 +597,7 @@
         <!--Payment View Controller-->
         <scene sceneID="PvL-V6-cnS">
             <objects>
-                <tableViewController id="6Gj-mt-X4i" customClass="PaymentViewController" customModule="LocalFlowWalletPOC" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6Gj-mt-X4i" customClass="PaymentViewController" customModule="LocalFlowWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LsO-pL-q07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

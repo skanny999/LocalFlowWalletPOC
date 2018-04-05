@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  LocalFlowWalletPOC
+//  LocalFlowWallet
 //
 //  Created by Riccardo Scanavacca on 10/02/2018.
 //  Copyright © 2018 Test. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  LocalFlowWalletPOCUITests.swift
-//  LocalFlowWalletPOCUITests
+//  LocalFlowWalletUITests.swift
+//  LocalFlowWalletUITests
 //
 //  Created by Riccardo Scanavacca on 10/02/2018.
 //  Copyright © 2018 Test. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class LocalFlowWalletPOCUITests: XCTestCase {
+class LocalFlowWalletUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

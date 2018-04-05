@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C48685573A802573E9B75A8 /* Pods_LocalFlowWalletPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */; };
+		1C48685573A802573E9B75A8 /* Pods_LocalFlowWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWallet.framework */; };
 		8B327A262034C55C00C916A8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A252034C55C00C916A8 /* Structs.swift */; };
 		8B327A282034C5C300C916A8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A272034C5C300C916A8 /* Enums.swift */; };
 		8BA16B56204AF959006C832C /* TransactionDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B55204AF959006C832C /* TransactionDetailsController.swift */; };
@@ -23,11 +23,11 @@
 		8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC83202F35D20011346A /* AppDelegate.swift */; };
 		8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC85202F35D20011346A /* LoginViewController.swift */; };
 		8BFEBC89202F35D20011346A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC87202F35D20011346A /* Main.storyboard */; };
-		8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */; };
+		8BFEBC8C202F35D20011346A /* LocalFlowWallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8A202F35D20011346A /* LocalFlowWallet.xcdatamodeld */; };
 		8BFEBC8E202F35D20011346A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8D202F35D20011346A /* Assets.xcassets */; };
 		8BFEBC91202F35D20011346A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFEBC8F202F35D20011346A /* LaunchScreen.storyboard */; };
-		8BFEBC9C202F35D20011346A /* LocalFlowWalletPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC9B202F35D20011346A /* LocalFlowWalletPOCTests.swift */; };
-		8BFEBCA7202F35D20011346A /* LocalFlowWalletPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */; };
+		8BFEBC9C202F35D20011346A /* LocalFlowWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBC9B202F35D20011346A /* LocalFlowWalletTests.swift */; };
+		8BFEBCA7202F35D20011346A /* LocalFlowWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCA6202F35D20011346A /* LocalFlowWalletUITests.swift */; };
 		8BFEBCBC202F42F60011346A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */; };
 		8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */; };
 		8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEBCB8202F42F60011346A /* Balance+CoreDataClass.swift */; };
@@ -46,22 +46,22 @@
 			containerPortal = 8BFEBC78202F35D20011346A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8BFEBC7F202F35D20011346A;
-			remoteInfo = LocalFlowWalletPOC;
+			remoteInfo = LocalFlowWallet;
 		};
 		8BFEBCA3202F35D20011346A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BFEBC78202F35D20011346A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8BFEBC7F202F35D20011346A;
-			remoteInfo = LocalFlowWalletPOC;
+			remoteInfo = LocalFlowWallet;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.release.xcconfig"; sourceTree = "<group>"; };
+		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B327A252034C55C00C916A8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8B327A272034C5C300C916A8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalFlowWalletPOC 2.xcdatamodel"; sourceTree = "<group>"; };
+		8B37C3BD205560BE00BDA5E8 /* LocalFlowWallet 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalFlowWallet 2.xcdatamodel"; sourceTree = "<group>"; };
 		8BA16B55204AF959006C832C /* TransactionDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsController.swift; sourceTree = "<group>"; };
 		8BA16B57204C412D006C832C /* TransactionWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebViewController.swift; sourceTree = "<group>"; };
 		8BA16B59204C4B27006C832C /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
@@ -72,19 +72,19 @@
 		8BD6BC632030563500D9D8A7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		8BD6BC672031D79F00D9D8A7 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
-		8BFEBC80202F35D20011346A /* LocalFlowWalletPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalFlowWalletPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BFEBC80202F35D20011346A /* LocalFlowWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalFlowWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFEBC83202F35D20011346A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BFEBC85202F35D20011346A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8BFEBC88202F35D20011346A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8BFEBC8B202F35D20011346A /* LocalFlowWalletPOC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalFlowWalletPOC.xcdatamodel; sourceTree = "<group>"; };
+		8BFEBC8B202F35D20011346A /* LocalFlowWallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalFlowWallet.xcdatamodel; sourceTree = "<group>"; };
 		8BFEBC8D202F35D20011346A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BFEBC90202F35D20011346A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BFEBC92202F35D20011346A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BFEBC97202F35D20011346A /* LocalFlowWalletPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BFEBC9B202F35D20011346A /* LocalFlowWalletPOCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletPOCTests.swift; sourceTree = "<group>"; };
+		8BFEBC97202F35D20011346A /* LocalFlowWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BFEBC9B202F35D20011346A /* LocalFlowWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletTests.swift; sourceTree = "<group>"; };
 		8BFEBC9D202F35D20011346A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BFEBCA2202F35D20011346A /* LocalFlowWalletPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletPOCUITests.swift; sourceTree = "<group>"; };
+		8BFEBCA2202F35D20011346A /* LocalFlowWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalFlowWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BFEBCA6202F35D20011346A /* LocalFlowWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlowWalletUITests.swift; sourceTree = "<group>"; };
 		8BFEBCA8202F35D20011346A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BFEBCB7202F42F60011346A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 		8BFEBCC4202F469F0011346A /* CoreDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		8BFEBCC5202F469F0011346A /* UpdateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		8BFEBCCB202F80A40011346A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalFlowWalletPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWalletPOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC.debug.xcconfig"; sourceTree = "<group>"; };
+		C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalFlowWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDC83355707699028ABAE2D3 /* Pods-LocalFlowWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C48685573A802573E9B75A8 /* Pods_LocalFlowWalletPOC.framework in Frameworks */,
+				1C48685573A802573E9B75A8 /* Pods_LocalFlowWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 		12DFE78DBD6C91E92489861E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWalletPOC.framework */,
+				C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWallet.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,9 +151,9 @@
 				8BFEBCCA202F4B7E0011346A /* Support Files */,
 				8BFEBCC2202F43050011346A /* Model */,
 				8BFEBCC9202F46A50011346A /* Services */,
-				8BFEBC82202F35D20011346A /* LocalFlowWalletPOC */,
-				8BFEBC9A202F35D20011346A /* LocalFlowWalletPOCTests */,
-				8BFEBCA5202F35D20011346A /* LocalFlowWalletPOCUITests */,
+				8BFEBC82202F35D20011346A /* LocalFlowWallet */,
+				8BFEBC9A202F35D20011346A /* LocalFlowWalletTests */,
+				8BFEBCA5202F35D20011346A /* LocalFlowWalletUITests */,
 				8BFEBC81202F35D20011346A /* Products */,
 				A3682E56CAC36DECA0FE95D7 /* Pods */,
 				12DFE78DBD6C91E92489861E /* Frameworks */,
@@ -163,14 +163,14 @@
 		8BFEBC81202F35D20011346A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEBC80202F35D20011346A /* LocalFlowWalletPOC.app */,
-				8BFEBC97202F35D20011346A /* LocalFlowWalletPOCTests.xctest */,
-				8BFEBCA2202F35D20011346A /* LocalFlowWalletPOCUITests.xctest */,
+				8BFEBC80202F35D20011346A /* LocalFlowWallet.app */,
+				8BFEBC97202F35D20011346A /* LocalFlowWalletTests.xctest */,
+				8BFEBCA2202F35D20011346A /* LocalFlowWalletUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8BFEBC82202F35D20011346A /* LocalFlowWalletPOC */ = {
+		8BFEBC82202F35D20011346A /* LocalFlowWallet */ = {
 			isa = PBXGroup;
 			children = (
 				8BFEBC83202F35D20011346A /* AppDelegate.swift */,
@@ -186,31 +186,31 @@
 				8BFEBC8F202F35D20011346A /* LaunchScreen.storyboard */,
 				8BFEBC92202F35D20011346A /* Info.plist */,
 			);
-			path = LocalFlowWalletPOC;
+			path = LocalFlowWallet;
 			sourceTree = "<group>";
 		};
-		8BFEBC9A202F35D20011346A /* LocalFlowWalletPOCTests */ = {
+		8BFEBC9A202F35D20011346A /* LocalFlowWalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEBC9B202F35D20011346A /* LocalFlowWalletPOCTests.swift */,
+				8BFEBC9B202F35D20011346A /* LocalFlowWalletTests.swift */,
 				8BFEBC9D202F35D20011346A /* Info.plist */,
 			);
-			path = LocalFlowWalletPOCTests;
+			path = LocalFlowWalletTests;
 			sourceTree = "<group>";
 		};
-		8BFEBCA5202F35D20011346A /* LocalFlowWalletPOCUITests */ = {
+		8BFEBCA5202F35D20011346A /* LocalFlowWalletUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEBCA6202F35D20011346A /* LocalFlowWalletPOCUITests.swift */,
+				8BFEBCA6202F35D20011346A /* LocalFlowWalletUITests.swift */,
 				8BFEBCA8202F35D20011346A /* Info.plist */,
 			);
-			path = LocalFlowWalletPOCUITests;
+			path = LocalFlowWalletUITests;
 			sourceTree = "<group>";
 		};
 		8BFEBCC2202F43050011346A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */,
+				8BFEBC8A202F35D20011346A /* LocalFlowWallet.xcdatamodeld */,
 				8BAE256C2061308100D6EF3A /* ActualBalance+CoreDataClass.swift */,
 				8BAE256D2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift */,
 				8BFEBCB6202F42F60011346A /* User+CoreDataClass.swift */,
@@ -245,8 +245,8 @@
 		A3682E56CAC36DECA0FE95D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */,
-				7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */,
+				DDC83355707699028ABAE2D3 /* Pods-LocalFlowWallet.debug.xcconfig */,
+				7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWallet.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -254,9 +254,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8BFEBC7F202F35D20011346A /* LocalFlowWalletPOC */ = {
+		8BFEBC7F202F35D20011346A /* LocalFlowWallet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BFEBCAB202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOC" */;
+			buildConfigurationList = 8BFEBCAB202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWallet" */;
 			buildPhases = (
 				0A8632252001973D16803CAA /* [CP] Check Pods Manifest.lock */,
 				8BFEBC7C202F35D20011346A /* Sources */,
@@ -269,14 +269,14 @@
 			);
 			dependencies = (
 			);
-			name = LocalFlowWalletPOC;
-			productName = LocalFlowWalletPOC;
-			productReference = 8BFEBC80202F35D20011346A /* LocalFlowWalletPOC.app */;
+			name = LocalFlowWallet;
+			productName = LocalFlowWallet;
+			productReference = 8BFEBC80202F35D20011346A /* LocalFlowWallet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8BFEBC96202F35D20011346A /* LocalFlowWalletPOCTests */ = {
+		8BFEBC96202F35D20011346A /* LocalFlowWalletTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BFEBCAE202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOCTests" */;
+			buildConfigurationList = 8BFEBCAE202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletTests" */;
 			buildPhases = (
 				8BFEBC93202F35D20011346A /* Sources */,
 				8BFEBC94202F35D20011346A /* Frameworks */,
@@ -287,14 +287,14 @@
 			dependencies = (
 				8BFEBC99202F35D20011346A /* PBXTargetDependency */,
 			);
-			name = LocalFlowWalletPOCTests;
-			productName = LocalFlowWalletPOCTests;
-			productReference = 8BFEBC97202F35D20011346A /* LocalFlowWalletPOCTests.xctest */;
+			name = LocalFlowWalletTests;
+			productName = LocalFlowWalletTests;
+			productReference = 8BFEBC97202F35D20011346A /* LocalFlowWalletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8BFEBCA1202F35D20011346A /* LocalFlowWalletPOCUITests */ = {
+		8BFEBCA1202F35D20011346A /* LocalFlowWalletUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BFEBCB1202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOCUITests" */;
+			buildConfigurationList = 8BFEBCB1202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletUITests" */;
 			buildPhases = (
 				8BFEBC9E202F35D20011346A /* Sources */,
 				8BFEBC9F202F35D20011346A /* Frameworks */,
@@ -305,9 +305,9 @@
 			dependencies = (
 				8BFEBCA4202F35D20011346A /* PBXTargetDependency */,
 			);
-			name = LocalFlowWalletPOCUITests;
-			productName = LocalFlowWalletPOCUITests;
-			productReference = 8BFEBCA2202F35D20011346A /* LocalFlowWalletPOCUITests.xctest */;
+			name = LocalFlowWalletUITests;
+			productName = LocalFlowWalletUITests;
+			productReference = 8BFEBCA2202F35D20011346A /* LocalFlowWalletUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -317,7 +317,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Test;
 				TargetAttributes = {
 					8BFEBC7F202F35D20011346A = {
@@ -336,7 +336,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8BFEBC7B202F35D20011346A /* Build configuration list for PBXProject "LocalFlowWalletPOC" */;
+			buildConfigurationList = 8BFEBC7B202F35D20011346A /* Build configuration list for PBXProject "LocalFlowWallet" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -349,9 +349,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BFEBC7F202F35D20011346A /* LocalFlowWalletPOC */,
-				8BFEBC96202F35D20011346A /* LocalFlowWalletPOCTests */,
-				8BFEBCA1202F35D20011346A /* LocalFlowWalletPOCUITests */,
+				8BFEBC7F202F35D20011346A /* LocalFlowWallet */,
+				8BFEBC96202F35D20011346A /* LocalFlowWalletTests */,
+				8BFEBCA1202F35D20011346A /* LocalFlowWalletUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -397,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0A8632252001973D16803CAA /* [CP] Check Pods Manifest.lock */ = {
@@ -411,7 +411,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LocalFlowWalletPOC-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-LocalFlowWallet-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,7 +424,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -437,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWalletPOC/Pods-LocalFlowWalletPOC-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -458,7 +458,7 @@
 				8BD6BC662031BB4600D9D8A7 /* PaymentViewController.swift in Sources */,
 				8BAE256E2061308100D6EF3A /* ActualBalance+CoreDataClass.swift in Sources */,
 				8BA16B5A204C4B27006C832C /* BalanceViewController.swift in Sources */,
-				8BFEBC8C202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld in Sources */,
+				8BFEBC8C202F35D20011346A /* LocalFlowWallet.xcdatamodeld in Sources */,
 				8BAE256F2061308100D6EF3A /* ActualBalance+CoreDataProperties.swift in Sources */,
 				8BFEBCBD202F42F60011346A /* User+CoreDataProperties.swift in Sources */,
 				8BFEBCC0202F42F60011346A /* Transaction+CoreDataClass.swift in Sources */,
@@ -478,7 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFEBC9C202F35D20011346A /* LocalFlowWalletPOCTests.swift in Sources */,
+				8BFEBC9C202F35D20011346A /* LocalFlowWalletTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFEBCA7202F35D20011346A /* LocalFlowWalletPOCUITests.swift in Sources */,
+				8BFEBCA7202F35D20011346A /* LocalFlowWalletUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,12 +495,12 @@
 /* Begin PBXTargetDependency section */
 		8BFEBC99202F35D20011346A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8BFEBC7F202F35D20011346A /* LocalFlowWalletPOC */;
+			target = 8BFEBC7F202F35D20011346A /* LocalFlowWallet */;
 			targetProxy = 8BFEBC98202F35D20011346A /* PBXContainerItemProxy */;
 		};
 		8BFEBCA4202F35D20011346A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8BFEBC7F202F35D20011346A /* LocalFlowWalletPOC */;
+			target = 8BFEBC7F202F35D20011346A /* LocalFlowWallet */;
 			targetProxy = 8BFEBCA3202F35D20011346A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -539,6 +539,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -546,6 +547,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -596,6 +598,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -603,6 +606,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -634,15 +638,15 @@
 		};
 		8BFEBCAC202F35D20011346A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDC83355707699028ABAE2D3 /* Pods-LocalFlowWalletPOC.debug.xcconfig */;
+			baseConfigurationReference = DDC83355707699028ABAE2D3 /* Pods-LocalFlowWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOC/Info.plist;
+				INFOPLIST_FILE = LocalFlowWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -651,14 +655,14 @@
 		};
 		8BFEBCAD202F35D20011346A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWalletPOC.release.xcconfig */;
+			baseConfigurationReference = 7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOC/Info.plist;
+				INFOPLIST_FILE = LocalFlowWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -672,13 +676,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOCTests/Info.plist;
+				INFOPLIST_FILE = LocalFlowWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOCTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalFlowWalletPOC.app/LocalFlowWalletPOC";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalFlowWallet.app/LocalFlowWallet";
 			};
 			name = Debug;
 		};
@@ -689,13 +693,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOCTests/Info.plist;
+				INFOPLIST_FILE = LocalFlowWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOCTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalFlowWalletPOC.app/LocalFlowWalletPOC";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalFlowWallet.app/LocalFlowWallet";
 			};
 			name = Release;
 		};
@@ -705,13 +709,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOCUITests/Info.plist;
+				INFOPLIST_FILE = LocalFlowWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOCUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LocalFlowWalletPOC;
+				TEST_TARGET_NAME = LocalFlowWallet;
 			};
 			name = Debug;
 		};
@@ -721,20 +725,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
-				INFOPLIST_FILE = LocalFlowWalletPOCUITests/Info.plist;
+				INFOPLIST_FILE = LocalFlowWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOCUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LocalFlowWalletPOC;
+				TEST_TARGET_NAME = LocalFlowWallet;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8BFEBC7B202F35D20011346A /* Build configuration list for PBXProject "LocalFlowWalletPOC" */ = {
+		8BFEBC7B202F35D20011346A /* Build configuration list for PBXProject "LocalFlowWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BFEBCA9202F35D20011346A /* Debug */,
@@ -743,7 +747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BFEBCAB202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOC" */ = {
+		8BFEBCAB202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BFEBCAC202F35D20011346A /* Debug */,
@@ -752,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BFEBCAE202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOCTests" */ = {
+		8BFEBCAE202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BFEBCAF202F35D20011346A /* Debug */,
@@ -761,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BFEBCB1202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletPOCUITests" */ = {
+		8BFEBCB1202F35D20011346A /* Build configuration list for PBXNativeTarget "LocalFlowWalletUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BFEBCB2202F35D20011346A /* Debug */,
@@ -773,14 +777,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8BFEBC8A202F35D20011346A /* LocalFlowWalletPOC.xcdatamodeld */ = {
+		8BFEBC8A202F35D20011346A /* LocalFlowWallet.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */,
-				8BFEBC8B202F35D20011346A /* LocalFlowWalletPOC.xcdatamodel */,
+				8B37C3BD205560BE00BDA5E8 /* LocalFlowWallet 2.xcdatamodel */,
+				8BFEBC8B202F35D20011346A /* LocalFlowWallet.xcdatamodel */,
 			);
-			currentVersion = 8B37C3BD205560BE00BDA5E8 /* LocalFlowWalletPOC 2.xcdatamodel */;
-			path = LocalFlowWalletPOC.xcdatamodeld;
+			currentVersion = 8B37C3BD205560BE00BDA5E8 /* LocalFlowWallet 2.xcdatamodel */;
+			path = LocalFlowWallet.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

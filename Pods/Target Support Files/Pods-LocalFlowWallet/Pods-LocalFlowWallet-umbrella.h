@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_LocalFlowWalletPOCVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_LocalFlowWalletPOCVersionString[];
+FOUNDATION_EXPORT double Pods_LocalFlowWalletVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_LocalFlowWalletVersionString[];
 
