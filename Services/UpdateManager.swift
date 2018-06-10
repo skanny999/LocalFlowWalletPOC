@@ -181,9 +181,7 @@ class UpdateManager {
         let transactions = allTransactions.filter{ $0.id! == id }
         
         if let transaction = transactions.first {
-            
-            print(transaction.id!)
-            
+
             let isTransactionConfirmed = transDict["status"] as! String == "confirmed" ? true : false
             
             if transaction.confirmed != isTransactionConfirmed {

@@ -28,9 +28,13 @@ class TransactionDetailsController: UITableViewController {
     }
     
     fileprivate func configureViewApperance() {
+        
         self.tableView.setBackgroundImage()
-        self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.5333, saturation: 0.62, brightness: 0.62, alpha: 1.0)
         viewTransactionButton.layer.cornerRadius = 8
+        self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.5333,
+                                                                     saturation: 0.62,
+                                                                     brightness: 0.62,
+                                                                     alpha: 1.0)
     }
     
     func configureDetails() {
@@ -118,10 +122,7 @@ class TransactionDetailsController: UITableViewController {
     
     func isIotaTransaction() -> Bool {
         
-        guard let transId = transaction?.iotaId, let transLink = transaction?.iotaTxHref else { return false }
-        
-        print(transId, transLink)
-        
+        guard let _ = transaction?.iotaId, let _ = transaction?.iotaTxHref else {return false }
         return true
     }
 }
@@ -129,11 +130,9 @@ class TransactionDetailsController: UITableViewController {
 
 extension TransactionDetailsController {
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

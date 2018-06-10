@@ -25,26 +25,25 @@ class BalanceViewController: UIViewController {
     
     fileprivate func configureView() {
         
-        if let user = user, let balance = user.balance {
-            
-            ewaBalaceLabel.text = String(balance.ewa)
-            iotaBalanceLabel.text = String(balance.iota)
-            euroBalanceLabel.text = String(balance.eur)
-            
-        } else {
-            
-            ewaBalaceLabel.text = "N/A"
-            iotaBalanceLabel.text = "N/A"
-            euroBalanceLabel.text = "N/A"
-            
-        }
+        ewaBalaceLabel.text = stringFromOptional(user?.balance?.ewa)
+        iotaBalanceLabel.text = stringFromOptional(user?.balance?.iota)
+        euroBalanceLabel.text = stringFromOptional(user?.balance?.eur)
+    }
+    
+    fileprivate func stringFromOptional<T>(_ value: T?) -> String {
         
+        if let value = value as? Double { return String(value) }
+        if let value = value as? Int64 { return String(value) }
+        return "N/A"
     }
 
     @IBAction func dismissButtonTapped(_ sender: Any) {
         
         navigationController?.dismiss(animated: true, completion: nil)
-        
     }
     
+    
+
 }
+
+
