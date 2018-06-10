@@ -6,6 +6,7 @@ target 'LocalFlowWallet' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'SearchTextField'
+    pod 'KeychainAccess'
     
 
 
