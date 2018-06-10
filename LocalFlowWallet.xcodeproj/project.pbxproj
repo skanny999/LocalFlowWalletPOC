@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C48685573A802573E9B75A8 /* Pods_LocalFlowWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWallet.framework */; };
+		8B14690720CD552B006B545E /* PaymentViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14690620CD552B006B545E /* PaymentViewControllerExtensions.swift */; };
 		8B327A262034C55C00C916A8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A252034C55C00C916A8 /* Structs.swift */; };
 		8B327A282034C5C300C916A8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A272034C5C300C916A8 /* Enums.swift */; };
 		8BA16B56204AF959006C832C /* TransactionDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B55204AF959006C832C /* TransactionDetailsController.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet.release.xcconfig"; sourceTree = "<group>"; };
+		8B14690620CD552B006B545E /* PaymentViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerExtensions.swift; sourceTree = "<group>"; };
 		8B327A252034C55C00C916A8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8B327A272034C5C300C916A8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8B37C3BD205560BE00BDA5E8 /* LocalFlowWallet 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalFlowWallet 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				8BFEBC85202F35D20011346A /* LoginViewController.swift */,
 				8BFEBCCB202F80A40011346A /* UserViewController.swift */,
 				8BD6BC652031BB4600D9D8A7 /* PaymentViewController.swift */,
+				8B14690620CD552B006B545E /* PaymentViewControllerExtensions.swift */,
 				8BA16B55204AF959006C832C /* TransactionDetailsController.swift */,
 				8BA16B57204C412D006C832C /* TransactionWebViewController.swift */,
 				8BA16B59204C4B27006C832C /* BalanceViewController.swift */,
@@ -451,6 +454,7 @@
 				8BFEBC86202F35D20011346A /* LoginViewController.swift in Sources */,
 				8B327A262034C55C00C916A8 /* Structs.swift in Sources */,
 				8BFEBCCC202F80A40011346A /* UserViewController.swift in Sources */,
+				8B14690720CD552B006B545E /* PaymentViewControllerExtensions.swift in Sources */,
 				8BFEBCC8202F46A00011346A /* UpdateManager.swift in Sources */,
 				8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */,
 				8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */,
@@ -632,10 +636,10 @@
 				INFOPLIST_FILE = LocalFlowWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -648,10 +652,10 @@
 				DEVELOPMENT_TEAM = 2GM46VBD99;
 				INFOPLIST_FILE = LocalFlowWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riccardoscanavacca.LocalFlowWalletPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

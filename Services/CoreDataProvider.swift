@@ -84,9 +84,7 @@ class CoreDataProvider {
                                                                               managedObjectContext: managedObjectContext,
                                                                               sectionNameKeyPath: nil,
                                                                               cacheName: nil)
-
         return fetchedResultController
-
     }
     
     
@@ -96,7 +94,6 @@ class CoreDataProvider {
         request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
 
         return request
-
     }
 
     
@@ -112,7 +109,6 @@ class CoreDataProvider {
                     fatalError("Failure to save context: \(error)")
                 }
             }
-
     }
   
 }

@@ -53,8 +53,6 @@ class NetworkProvider {
                 
                 let updateManager = UpdateManager()
                 
-                
-                
                 updateManager.processUserJSON(json: json, completion: { (processed) in
                     
                     completion(processed, nil)
@@ -69,7 +67,7 @@ class NetworkProvider {
 
     
     
-    static func post(_ json: Data, to user: String, completion:@escaping (PostCompletion)) {
+    static func postTransaction(_ json: Data, to user: String, completion:@escaping (PostCompletion)) {
         
         let request = urlRequest(to: user, with: json)
         

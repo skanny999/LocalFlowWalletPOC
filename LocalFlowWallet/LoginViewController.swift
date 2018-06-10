@@ -14,10 +14,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordTextView: UITextField!
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var loginButton: UIButton!
+
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        configureView()
+    }
+    
+    
+    fileprivate func configureView() {
+        
         errorLabel.text = nil
         usernameTextView.becomeFirstResponder()
         passwordTextView.delegate = self
@@ -62,7 +69,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
-        
         errorLabel.text = nil
     }
 

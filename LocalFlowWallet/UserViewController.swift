@@ -35,52 +35,6 @@ class UserViewController: UITableViewController {
     }
     
     
-    @IBAction func logoutButtonTapped(_ sender: Any) {
-        
-        logout()
-    }
-
-    fileprivate func logout() {
-        
-        UpdateManager.logout()
-        
-        self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
-    }
-    
-    fileprivate func addGestureToBalanceView() {
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.showFullBalance))
-        
-        balanceStackView.addGestureRecognizer(tap)
-    }
-    
-    @objc func showFullBalance() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "NAVIGATION") as! UINavigationController
-        
-        let balanceViewController = navigationController.viewControllers.first as! BalanceViewController
-        
-        balanceViewController.user = user
-        
-        present(navigationController, animated: true, completion: nil)
-        
-    }
-    
-    
-    @objc func checkForNewTransactions() {
-        
-        UpdateManager.updateNewTransactions { [weak self] (transactionAdded) in
-            
-            if transactionAdded {
-                
-                self?.showNewTransactionAlert()
-            }
-        }
-    }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -88,6 +42,10 @@ class UserViewController: UITableViewController {
         loadUser()
     }
     
+    func configureFetchedResultsController() {
+        
+        fetchedResultsController.delegate = self
+    }
     
     fileprivate func loadUser() {
         
@@ -102,7 +60,6 @@ class UserViewController: UITableViewController {
         }
     }
     
-    
     func configureLabels() {
         
         if let user = user {
@@ -115,10 +72,54 @@ class UserViewController: UITableViewController {
     }
     
     
-    func configureFetchedResultsController() {
+    @IBAction func logoutButtonTapped(_ sender: Any) {
         
-        fetchedResultsController.delegate = self
+        logout()
     }
+
+    fileprivate func logout() {
+        
+        UpdateManager.logout()
+        self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
+    }
+    
+    fileprivate func addGestureToBalanceView() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.presentBalanceViewController))
+        
+        balanceStackView.addGestureRecognizer(tap)
+    }
+    
+    @objc func presentBalanceViewController() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "NAVIGATION") as! UINavigationController
+        let balanceViewController = navigationController.viewControllers.first as! BalanceViewController
+        
+        balanceViewController.user = user
+        
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func checkForNewTransactions() {
+        
+        UpdateManager.updateNewTransactions { [weak self] (transactionAdded) in
+            
+            if transactionAdded {
+                
+                self?.showNewTransactionAlert()
+            }
+        }
+    }
+    
+
+    
+    
+
+    
+    
+
     
     
     func performFetch() {
