@@ -23,11 +23,12 @@ class UserViewController: UITableViewController {
  
     @IBOutlet var balanceStackView: UIStackView!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
-
+        configureRefreshTimer()
         configureFetchedResultsController()
         checkForNewTransactions()
         addGestureToBalanceView()
@@ -38,8 +39,13 @@ class UserViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        performFetch()
         loadUser()
+        fetchTransactions()
+    }
+    
+    fileprivate func configureRefreshTimer() {
+        
+        timer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(UserViewController.checkForNewTransactions), userInfo: nil, repeats: true)
     }
     
     func configureFetchedResultsController() {
@@ -49,14 +55,14 @@ class UserViewController: UITableViewController {
     
     fileprivate func loadUser() {
         
-        if User.currentUsers()?.count == 0 {
+        if let user = User.currentUser() {
             
-            self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
+            self.user = user
+            configureLabels()
             
         } else {
             
-            user = User.currentUser()
-            configureLabels()
+            self.performSegue(withIdentifier: "LOGIN_SEGUE", sender: nil)
         }
     }
     
@@ -85,8 +91,8 @@ class UserViewController: UITableViewController {
     
     fileprivate func addGestureToBalanceView() {
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.presentBalanceViewController))
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(presentBalanceViewController))
         balanceStackView.addGestureRecognizer(tap)
     }
     
@@ -97,7 +103,6 @@ class UserViewController: UITableViewController {
         let balanceViewController = navigationController.viewControllers.first as! BalanceViewController
         
         balanceViewController.user = user
-        
         present(navigationController, animated: true, completion: nil)
     }
     
@@ -114,15 +119,7 @@ class UserViewController: UITableViewController {
     }
     
 
-    
-    
-
-    
-    
-
-    
-    
-    func performFetch() {
+    func fetchTransactions() {
         
         do {
             try fetchedResultsController.performFetch()

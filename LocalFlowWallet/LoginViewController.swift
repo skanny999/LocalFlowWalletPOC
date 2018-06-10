@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameTextView.becomeFirstResponder()
         passwordTextView.delegate = self
         loginButton.layer.cornerRadius = 8
+        loginButton.isEnabled = false
         hideKeyboard()
     }
 
@@ -42,34 +43,50 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         login()
         passwordTextView.resignFirstResponder()
-        
         return true
     }
-
+    
     
     fileprivate func login() {
         
-        if let password = passwordTextView.text, let username = usernameTextView.text {
-            
-            UpdateManager.update(user: username, withPassword: password, completion: { (updated, message) in
-                
-                if updated {
-                    
-                    User.currentUser()?.password = password
-                    CoreDataProvider.shared.save()
-                    
-                    self.dismiss(animated: true, completion: nil)
-                    
-                } else {
-                    
-                    DispatchQueue.main.async {
-                        
-                        self.errorLabel.text = message
-                    }
-                }
-            })
+        guard let password = passwordTextView.text, password.count > 0 else {
+            updateErrorLabel(with: "Please enter a valid password")
+            return
         }
+        
+        guard let username = usernameTextView.text, username.count > 0 else {
+            updateErrorLabel(with: "Please enter a valid username")
+            return
+        }
+
+        processAutentication(with: username, and: password)
+
         errorLabel.text = nil
+    }
+    
+    
+    fileprivate func processAutentication(with username: String, and password: String) {
+        
+        UpdateManager.update(user: username, withPassword: password, completion: { [weak self] (updated, message) in
+            
+            updated ? self?.updateUserPassword(with: password) : self?.updateErrorLabel(with:message)
+        })
+    }
+    
+    fileprivate func updateUserPassword(with password:String) {
+        
+        User.currentUser()?.password = password
+        CoreDataProvider.shared.save()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    fileprivate func updateErrorLabel(with message: String?) {
+        
+        DispatchQueue.main.async {
+            
+            self.errorLabel.text = message
+        }
     }
 
 }
