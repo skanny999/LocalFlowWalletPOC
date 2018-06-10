@@ -44,15 +44,9 @@ public class Transaction: NSManagedObject {
         
     }
     
-    static func newOutTransaction(from dict: [String : Any]) -> Transaction {
+    static func newTransaction(from dict: [String : Any], outgoing: Bool) -> Transaction {
 
-        return transaction(from: dict, outgoing: true)
-    }
-    
-    
-    static func newInTransaction(from dict: [String : Any]) -> Transaction {
-        
-        return transaction(from: dict, outgoing: false)
+        return transaction(from: dict, outgoing: outgoing)
     }
     
     

@@ -29,7 +29,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameTextView.becomeFirstResponder()
         passwordTextView.delegate = self
         loginButton.layer.cornerRadius = 8
-        loginButton.isEnabled = false
         hideKeyboard()
     }
 
@@ -60,14 +59,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
 
         processAutentication(with: username, and: password)
-
         errorLabel.text = nil
     }
     
     
     fileprivate func processAutentication(with username: String, and password: String) {
         
-        UpdateManager.update(user: username, withPassword: password, completion: { [weak self] (updated, message) in
+        UpdateManager.updateTransactions(for: username, withPassword: password, completion: { [weak self] (updated, message) in
             
             updated ? self?.updateUserPassword(with: password) : self?.updateErrorLabel(with:message)
         })

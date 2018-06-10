@@ -31,13 +31,11 @@ class CoreDataProvider {
     func newActualBalance() -> ActualBalance {
         
         return NSEntityDescription.insertNewObject(forEntityName: "ActualBalance", into: managedObjectContext) as! ActualBalance
-        
     }
     
     func newTransaction() -> Transaction {
         
         return NSEntityDescription.insertNewObject(forEntityName: "Transaction", into: managedObjectContext) as! Transaction
-        
     }
     
     func fetchUser(completion: @escaping (User?) -> ()) {
@@ -60,20 +58,16 @@ class CoreDataProvider {
         }
     }
     
-
     
     func fetchAllTransactions(completion: @escaping ([Transaction]) -> ()) {
         
         managedObjectContext.perform {
             
             let fetchRequest = NSFetchRequest<Transaction>(entityName: "Transaction")
-            
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
             
             let results = try! fetchRequest.execute()
-            
             completion (results)
-            
         }
     }
     

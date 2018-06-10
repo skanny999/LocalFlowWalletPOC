@@ -12,22 +12,13 @@ import SwiftyJSON
 
 class UpdateManager {
     
-    static func update(user: String, withPassword password: String, completion:@escaping((Bool, String?) -> Void)) {
-        
-        NetworkProvider.fetchTransactions(forUser: user, withPassword: password) { (updated, message) in
-            
-            completion(updated, message)
-        }
-    }
-    
-    
     static func updateNewTransactions(completion:@escaping (Bool) -> Void) {
-
+        
         if let user = User.currentUser() {
             
             let transactionsCount = Transaction.allTransactions()?.count
             
-            update(user: user.nickname!, withPassword: user.password!, completion: { (updated, message) in
+            updateTransactions(for: user.nickname!, withPassword: user.password!) { (updated, message) in
                 
                 if updated {
                     
@@ -36,56 +27,58 @@ class UpdateManager {
                         completion(true)
                     }
                 }
-            })
+            }
         }
     }
-
     
-    fileprivate func addIncomingTransactions(fromDict dict: [String : Any], to user: User) {
+    
+    static func updateTransactions(for user: String, withPassword password: String, completion:@escaping((Bool, String?) -> Void)) {
         
-        if let allTransactions = Transaction.allTransactions() {
-        
-            let transactionIds = allTransactions.map({ $0.id! })
+        NetworkProvider.fetchTransactions(forUser: user, withPassword: password) { (updated, message) in
             
-            if let transIn = dict["txes_in"] as? [[String : Any]] {
-
-                for transDict in transIn {
-                    
-                    if let id = transDict["id"] as? String {
-                        
-                        if !transactionIds.contains(id) {
-                            
-                            user.addToTransactions(Transaction.newInTransaction(from: transDict))
-                            
-                        } else {
-                            
-                            updateStatus(of: allTransactions, withId: id, transDict)
-                        }
-                    }
-                }
-            }
-            
-            if let transIn = dict["txes_out"] as? [[String : Any]] {
+            if updated {
                 
-                for transDict in transIn {
-                    
-                    if let id = transDict["id"] as? String {
-                        
-                        if !transactionIds.contains(id) {
-                            
-                            user.addToTransactions(Transaction.newInTransaction(from: transDict))
-                            
-                        } else {
-                            
-                            updateStatus(of: allTransactions, withId: id, transDict)
-                        }
-                    }
-                }
+                updateUserPassword(with:password)
             }
-            
-        } else {
+            completion(updated, message)
+        }
+    }
+    
+    
+    fileprivate func addAllTransactions(fromDict dict: [String : Any], to user: User) {
+        
+        guard let allTransactions = Transaction.allTransactions() else {
             
             addTransactionsIn(fromDict: dict, to: user)
+            return
+        }
+        
+        addTransactions(outgoing: true, to:allTransactions, from: dict, for: user)
+        addTransactions(outgoing: false, to:allTransactions, from: dict, for: user)
+    }
+    
+    
+    fileprivate func addTransactions(outgoing: Bool,to allTransactions:[Transaction], from dict: [String : Any], for user: User) {
+        
+        let transactionIds = allTransactions.map({ $0.id! })
+        let txKey = outgoing ? "txes_in" : "txes_out"
+        
+        if let transactions = dict[txKey] as? [[String : Any]] {
+            
+            for transDict in transactions {
+                
+                if let id = transDict["id"] as? String {
+                    
+                    if !transactionIds.contains(id) {
+                        
+                        user.addToTransactions(Transaction.newTransaction(from: transDict, outgoing: outgoing))
+                        
+                    } else {
+                        
+                        updateStatus(of: allTransactions, withId: id, transDict)
+                    }
+                }
+            }
         }
     }
     
@@ -96,12 +89,11 @@ class UpdateManager {
         
         if let user = User.currentUser() {
             
-            addIncomingTransactions(fromDict: userDict, to: user)
+            addAllTransactions(fromDict: userDict, to: user)
             
         } else {
             
             processNewUser(withJSON: userDict)
-            
         }
         
         CoreDataProvider.shared.save()
@@ -116,9 +108,7 @@ class UpdateManager {
         let user = User.newUser(from: json)
         
         addBalance(fromDict: json, to: user)
-        
         addTransactionsOut(fromDict: json, to:user)
-        
         addTransactionsIn(fromDict: json, to: user)
     }
     
@@ -127,14 +117,12 @@ class UpdateManager {
         
         CoreDataProvider.shared.managedObjectContext.perform {
             
-            User.currentUser()?.addToTransactions(Transaction.newOutTransaction(from: dict))
+            User.currentUser()?.addToTransactions(Transaction.newTransaction(from: dict, outgoing: true))
         }
         
         CoreDataProvider.shared.save()
     }
-    
-    
-    
+
     
     fileprivate func addTransactionsIn(fromDict json: [String : Any], to user: User) {
         
@@ -142,9 +130,9 @@ class UpdateManager {
             
             if let transactions = tranIn as? Array<Any> {
                 
-                for transaction in transactions {
+                for transDict in transactions {
                     
-                    user.addToTransactions(Transaction.newInTransaction(from: transaction as! [String : Any]))
+                    user.addToTransactions(Transaction.newTransaction(from: transDict as! [String : Any], outgoing: false))
                 }
             }
         }
@@ -157,9 +145,9 @@ class UpdateManager {
             
             if let transactions = tranOut as? Array<Any> {
                 
-                for transaction in transactions {
+                for transDict in transactions {
                     
-                    user.addToTransactions(Transaction.newOutTransaction(from: transaction as! [String : Any]))
+                    user.addToTransactions(Transaction.newTransaction(from: transDict as! [String : Any], outgoing: true))
                 }
             }
         }
@@ -198,6 +186,12 @@ class UpdateManager {
                 }
             }
         }
+    }
+    
+    fileprivate static func updateUserPassword(with password:String) {
+        
+        User.currentUser()?.password = password
+        CoreDataProvider.shared.save()
     }
     
     

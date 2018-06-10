@@ -64,13 +64,13 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         case .ewa:
             return User.currentUser()?.balance?.ewa.roundedString() ?? "0"
         case .iota:
-            return showIotaBalanceString()
+            return iotaBalanceString()
         case .euro:
             return User.currentUser()?.balance?.eur.roundedString() ?? "0"
         }
     }
     
-    fileprivate func showIotaBalanceString() -> String {
+    fileprivate func iotaBalanceString() -> String {
         
         let iotaAmount = User.currentUser()?.balance?.iota ?? 0
         return Double(iotaAmount).roundedAsIntString()
