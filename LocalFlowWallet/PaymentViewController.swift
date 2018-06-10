@@ -39,9 +39,7 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         
         updateLabel(with: "")
     }
-    
-    
-    
+
     
     @IBAction func currencyButtonPressed(_ sender: Any) {
         
@@ -58,7 +56,6 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
         return tableView.frame.size.height / 6
     }
     
-
     
     fileprivate func barTitle() -> String {
  
@@ -135,53 +132,17 @@ class PaymentViewController: UITableViewController, UITextFieldDelegate {
             return
         }
         
-        sendPayment(for: amount, to: String(recipient), withMessage: messageTextField.text)
+        NetworkProvider.sendPayment(for: amount, currency: currentCurrency, to: String(recipient), withMessage: messageTextField.text) { [weak self] (success: Bool, message: String?) in
+            
+            if success {
+                
+                self?.resetFields()
+            }
+            
+            self?.updateLabel(with: message ?? "")
+        }
     }
      
 
 
-    
-    func sendPayment(for amount: Double, to recipient: String, withMessage message: String?) {
-        
-        if let data = transactionJson(for: amount, withMessage: message) {
-            
-            NetworkProvider.postTransaction(data, to: recipient, completion: { [weak self] (postWasSuccesful, message) in
-
-                if postWasSuccesful {
-                    
-                    self?.resetFields()
-                }
-                
-                self?.updateLabel(with: message)
-
-                self?.view.endEditing(true)
-            })
-        }
-    }
-
-    
-    func transactionJson(for amount: Double, withMessage message: String?) -> Data? {
-        
-        guard let user = User.currentUser(),
-            let nickname = user.nickname?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let password = user.password?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                fatalError("No User")
-        }
-        
-        let transactionDict = ["currency" : currentCurrency.rawValue.lowercased(), "amount" : amount, "message" : message ?? ""] as [String : Any]
-        
-        let dict = ["username" : nickname,  "password" : password, "tx" : transactionDict] as [String : Any]
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-            
-            return jsonData
-            
-        } catch {
-            
-            print(error.localizedDescription)
-        }
-
-        return nil
-    }
 }

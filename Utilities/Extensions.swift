@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SearchTextField
 
-typealias PostCompletion = (Bool, String) -> Void
+typealias NetworkCompletion = (Bool, String?) -> Void
 
 
 extension String {

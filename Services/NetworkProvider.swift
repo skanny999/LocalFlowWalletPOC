@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class NetworkProvider {
     
+    //MARK:- Network Calls
     
     static func fetchContacts(completion: @escaping ([String]) -> Void) {
         
@@ -31,9 +32,9 @@ class NetworkProvider {
     }
     
     
-    static func fetchJSON(forUser name: String, withPassword password: String, completion:@escaping ((Bool, String?) -> Void)) {
+    static func fetchTransactions(forUser name: String, withPassword password: String, completion: @escaping(NetworkCompletion)) {
         
-        let fetchUrl = url(for: name, andPassword: password)
+        let fetchUrl = transactionsUrl(for: name, andPassword: password)
         
         Alamofire.request(fetchUrl).responseJSON { (response) in
             
@@ -64,12 +65,10 @@ class NetworkProvider {
             }
         }
     }
-
     
-    
-    static func postTransaction(_ json: Data, to user: String, completion:@escaping (PostCompletion)) {
+    static func postTransaction(_ json: Data, to recipient: String, completion: @escaping(NetworkCompletion)) {
         
-        let request = urlRequest(to: user, with: json)
+        let request = postTransactionUrlRequest(to: recipient, with: json)
         
         Alamofire.request(request).responseJSON { (response) in
             
@@ -96,12 +95,27 @@ class NetworkProvider {
         }
     }
     
+    static func sendPayment(for amount: Double, currency: Currency, to recipient: String, withMessage message: String?,  completion: @escaping(NetworkCompletion)) {
+        
+        if let data = transactionJson(for: amount,currency: currency, withMessage: message) {
+            
+            self.postTransaction(data, to: recipient, completion: { (postWasSuccesful, message) in
+                
+                completion(postWasSuccesful, message)
+            })
+        }
+    }
+
+    
+    //MARK:- URL Factory
     
     static func contactsUrl() -> URL {
         
-        if let userName = User.currentUser()?.nickname, let password = User.currentUser()?.password {
+        if let userName = User.currentUser()?.nickname,
+            let password = User.currentUser()?.password,
+            let url = URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?username=\(userName)&password=\(password)") {
             
-            return URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users?username=\(userName)&password=\(password)")!
+            return url
             
         } else {
             
@@ -110,45 +124,71 @@ class NetworkProvider {
     }
     
     
-    static func url(for name: String, andPassword password: String) -> URL {
+    static func transactionsUrl(for name: String, andPassword password: String) -> URL {
         
-        var urlString: String
-        
-        if let name = name.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let password = password.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+        if let password = password.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string:"https://localflow-pay-poc.herokuapp.com/api/v1/users/\(unwrapped(name))?username=\(unwrapped(name))&password=\(password)") {
             
-            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)"
-
-        } else {
-            
-            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(name)?username=\(name)&password=\(password)"
+            return url
         }
         
-        return URL(string:urlString)!
+        fatalError("Cannot web encode user password")
     }
     
     
-    static func urlRequest(to user: String, with json: Data) -> URLRequest {
+    static func postTransactionUrl(for recipient: String) -> URL {
         
-        var urlString: String
-        
-        if let user = user.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-
-            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
-
-        } else {
-        
-            urlString = "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(user)/pay"
+        guard let url = URL(string: "https://localflow-pay-poc.herokuapp.com/api/v1/users/\(recipient)/pay") else {
+            
+            fatalError("Cannot create url for payment recipient")
         }
+        return url
+    }
     
-        let url = URL(string: urlString)!
+    static func transactionJson(for amount: Double, currency: Currency, withMessage message: String?) -> Data? {
         
-        var request = URLRequest(url: url)
+        guard let user = User.currentUser(),
+            let nickname = user.nickname?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let password = user.password?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                fatalError("No User")
+        }
+        
+        let transactionDict = ["currency" : currency.rawValue.lowercased(), "amount" : amount, "message" : message ?? ""] as [String : Any]
+        
+        let dict = ["username" : nickname,  "password" : password, "tx" : transactionDict] as [String : Any]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            
+            return jsonData
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
+
+    // MARK:- URL Transaction Factory
+    
+    static func postTransactionUrlRequest(to recipient: String, with json: Data) -> URLRequest {
+
+        var request = URLRequest(url: postTransactionUrl(for: recipient))
         request.allHTTPHeaderFields = ["Accept" : "application/json", "Content-Type" : "application/json"]
         request.httpMethod = "POST"
         request.httpBody = json
-        
         return request
+    }
+    
+    fileprivate static func unwrapped(_ name: String?) -> String {
+        
+        guard let name = name?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+            
+            fatalError("Cannot web encode user name")
+        }
+        return name
     }
 }
 

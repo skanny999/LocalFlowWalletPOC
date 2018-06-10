@@ -27,6 +27,7 @@ extension PaymentViewController {
             
             self?.show(messageLabel: message)
         }
+        self.view.endEditing(true)
     }
     
     
@@ -39,9 +40,5 @@ extension PaymentViewController {
             tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
         }
     }
-    
-    
-    
-    
-    
+
 }

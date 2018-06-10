@@ -38,7 +38,6 @@ class TransactionCell: UITableViewCell {
             dateLabel.text = formatter.string(from: creationDate as Date)
         }
         
-        
         txArrowImageView.arrowImage(isOutgoing: transaction.outgoing)
         txConfirmationImageView.confirmationImage(isConfirmed: transaction.confirmed)
         toFromLabel.text = transaction.outgoing ? "To \(transaction.toNickname!)" : "From \(transaction.fromNickname!)"

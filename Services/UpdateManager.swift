@@ -14,7 +14,7 @@ class UpdateManager {
     
     static func update(user: String, withPassword password: String, completion:@escaping((Bool, String?) -> Void)) {
         
-        NetworkProvider.fetchJSON(forUser: user, withPassword: password) { (updated, message) in
+        NetworkProvider.fetchTransactions(forUser: user, withPassword: password) { (updated, message) in
             
             completion(updated, message)
         }
