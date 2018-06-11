@@ -52,9 +52,7 @@ class NetworkProvider {
             
             if response.response?.statusCode == 200 {
                 
-                let updateManager = UpdateManager()
-                
-                updateManager.processUserJSON(json: json, completion: { (processed) in
+                UpdateProcessor.processUserJSON(json: json, completion: { (processed) in
                     
                     completion(processed, nil)
                 })
@@ -83,8 +81,7 @@ class NetworkProvider {
             
             if response.response?.statusCode == 201, let transactionDict = json["tx"].dictionaryObject {
                 
-                let updateManager = UpdateManager()
-                updateManager.processTxOut(from: transactionDict)
+                UpdateProcessor.processNewSentTransaction(from: transactionDict)
                 
                 completion(true, message)
                 

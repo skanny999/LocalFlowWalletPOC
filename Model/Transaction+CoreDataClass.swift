@@ -77,11 +77,9 @@ public class Transaction: NSManagedObject {
         }
         
         if let createdString = dict[key.created] as? String {
-
-            if let date = formatter.date(from: createdString) as NSDate? {
             
-            transaction.createdAt = date
-            }
+            transaction.createdAt = formatter.date(from: createdString) as NSDate?
+            
         }
         
         if let updatedString = dict[key.updated] as? String, let date = formatter.date(from: updatedString) as NSDate? {

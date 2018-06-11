@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C48685573A802573E9B75A8 /* Pods_LocalFlowWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C229A9FDD41FC98586B4C46E /* Pods_LocalFlowWallet.framework */; };
 		8B14690720CD552B006B545E /* PaymentViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14690620CD552B006B545E /* PaymentViewControllerExtensions.swift */; };
+		8B14694720CF324C006B545E /* UpdateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14694620CF324C006B545E /* UpdateProcessor.swift */; };
 		8B327A262034C55C00C916A8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A252034C55C00C916A8 /* Structs.swift */; };
 		8B327A282034C5C300C916A8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B327A272034C5C300C916A8 /* Enums.swift */; };
 		8BA16B56204AF959006C832C /* TransactionDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA16B55204AF959006C832C /* TransactionDetailsController.swift */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		7BFFC66B12902502B32BC7CD /* Pods-LocalFlowWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalFlowWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalFlowWallet/Pods-LocalFlowWallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B14690620CD552B006B545E /* PaymentViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerExtensions.swift; sourceTree = "<group>"; };
+		8B14694620CF324C006B545E /* UpdateProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProcessor.swift; sourceTree = "<group>"; };
 		8B327A252034C55C00C916A8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8B327A272034C5C300C916A8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8B37C3BD205560BE00BDA5E8 /* LocalFlowWallet 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalFlowWallet 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				8BFEBCC4202F469F0011346A /* CoreDataProvider.swift */,
 				8BFEBCC3202F469F0011346A /* NetworkProvider.swift */,
 				8BFEBCC5202F469F0011346A /* UpdateManager.swift */,
+				8B14694620CF324C006B545E /* UpdateProcessor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				8BFEBC84202F35D20011346A /* AppDelegate.swift in Sources */,
 				8BFEBCBE202F42F60011346A /* Balance+CoreDataClass.swift in Sources */,
 				8BFEBCC6202F46A00011346A /* NetworkProvider.swift in Sources */,
+				8B14694720CF324C006B545E /* UpdateProcessor.swift in Sources */,
 				8BFEBCBC202F42F60011346A /* User+CoreDataClass.swift in Sources */,
 				8BFEBCC7202F46A00011346A /* CoreDataProvider.swift in Sources */,
 			);
