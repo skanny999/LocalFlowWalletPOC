@@ -23,12 +23,16 @@ extension String {
     var doubleValue: Double? {
         
         return NumFormatter.instance.number(from: self)?.doubleValue
-        
     }
     
     var integerValue: Int? {
         
-        return NumFormatter.instance.number(from: self)?.intValue
+        if let number = NumFormatter.instance.number(from: self) {
+            
+            return Int(number.doubleValue.roundToDecimal(0))
+        }
+        
+        return nil
     }
 }
 
@@ -46,7 +50,7 @@ extension Double {
     
     func roundedAsIntString() -> String {
         
-        return String(roundToDecimal(0))
+        return String(Int(roundToDecimal(0)))
     }
 }
 
